@@ -1,0 +1,66 @@
+name: build
+
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install pre-commit hook
+        run: |
+          pip install pre-commit
+          pre-commit install
+      - name: Linting
+        run: pre-commit run --all-files
+      - name: Check docstring coverage
+        run: |
+          pip install interrogate
+          interrogate -v --ignore-init-method --ignore-module --ignore-nested-functions --ignore-regex "__repr__" --fail-under 0 dethub
+
+  build_cuda:
+    runs-on: ubuntu-18.04
+    env:
+      NVIDIA_DRIVER_CAPABILITIES: 'utility,compute'
+      DEBIAN_FRONTEND: noninteractive
+    container:
+      image: nvcr.io/nvidia/pytorch:22.07-py3
+    strategy:
+      matrix:
+        include:
+          - mmcv: 1.6.0
+            mmcv_link: "cu115/torch1.11.0"
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install utils
+        run: pip install psutil
+      - name: Install system dependencies
+        run: |
+          apt-get update && apt-get install -y vim libgl1-mesa-dev
+          apt-get clean
+          rm -rf /var/lib/apt/lists/*
+          FORCE_CUDA="1"
+      - name: Install mmdet dependencies
+        run: |
+          pip install setuptools
+          pip install --no-cache-dir openmim==0.3.0 && \
+          pip install -r requirements/requirements.txt
+          pip install -r requirements/tests.txt
+          pip uninstall -y opencv-python && pip install opencv-python==4.5.1.48 && \
+          MMCV_WITH_OPS=1 pip install mmcv==2.0.0rc1 && \
+          pip install 'git+https://github.com/facebookresearch/detectron2.git'
+          python -c "import mmcv"
+      - name: Build and install
+        run: rm -rf .eggs && pip install -e .
+      - name: Soft link
+        run: ln -s /opt/conda/lib/python3.8/site-packages /opt/site-packages
+      - name: Run unittests and generate coverage report
+        run: |
+          coverage run --branch --source=dethub -m pytest tests/
+          coverage xml
+          coverage report -m
