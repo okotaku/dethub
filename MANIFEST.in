@@ -1,0 +1,4 @@
+include fovkrt/*.txt
+include dethub/VERSION
+recursive-include dethub/.mim/configs *.py *.yml
+recursive-include dethub/.mim/tools *.sh *.py

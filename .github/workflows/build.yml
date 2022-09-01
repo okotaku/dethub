@@ -1,0 +1,97 @@
+name: build
+
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install pre-commit hook
+        run: |
+          pip install pre-commit
+          pre-commit install
+      - name: Linting
+        run: pre-commit run --all-files
+      - name: Check docstring coverage
+        run: |
+          pip install interrogate
+          interrogate -v --ignore-init-method --ignore-module --ignore-nested-functions --ignore-regex "__repr__" --fail-under 0 dethub
+
+  build_cpu:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+        include:
+          - torch: 1.11.0
+            torchvision: 0.12.0
+            mmcv: 1.6.0
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install PyTorch
+        run: pip install torch==${{matrix.torch}}+cpu torchvision==${{matrix.torchvision}}+cpu -f https://download.pytorch.org/whl/torch_stable.html
+      - name: Install MMCV
+        run: |
+          pip install mmcv-full==${{matrix.mmcv}} -f https://download.openmmlab.com/mmcv/dist/cpu/torch${{matrix.torch}}/index.html
+          python -c 'import mmcv; print(mmcv.__version__)'
+      - name: Install unittest dependencies
+        run: |
+          pip install -r requirements/tests.txt
+          pip install git+https://github.com/cocodataset/panopticapi.git
+      - name: Build and install
+        run: rm -rf .eggs && pip install -e .
+      - name: Run unittests and generate coverage report
+        run: |
+          coverage run --branch --source=dethub -m pytest tests/
+          coverage xml
+          coverage report -m
+
+  build_cuda:
+    runs-on: ubuntu-18.04
+    env:
+      NVIDIA_DRIVER_CAPABILITIES: 'utility,compute'
+      DEBIAN_FRONTEND: noninteractive
+    container:
+      image: nvcr.io/nvidia/pytorch:22.07-py3
+    strategy:
+      matrix:
+        include:
+          - torch: 1.11.0+cu115
+            torchvision: 0.12.0+cu115
+            mmcv: 1.6.0
+            mmcv_link: "cu115/torch1.11.0"
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install utils
+        run: pip install psutil
+      - name: Install system dependencies
+        run: |
+          apt-get update && apt-get install -y vim libgl1-mesa-dev
+          apt-get clean
+          rm -rf /var/lib/apt/lists/*
+      - name: Install mmdet dependencies
+        run: |
+          pip install setuptools
+          pip install --no-cache-dir openmim==0.2.1
+          mim install mmcv-full==${{matrix.mmcv}}
+          pip install -r docker/requirements.txt
+          pip install -r docker/tests.txt
+          pip uninstall -y opencv-python && pip install opencv-python==4.5.1.48
+          python -c "import mmcv"
+      - name: Build and install
+        run: rm -rf .eggs && pip install -e .
+      - name: Run unittests and generate coverage report
+        run: |
+          coverage run --branch --source=dethub -m pytest tests/
+          coverage xml
+          coverage report -m
