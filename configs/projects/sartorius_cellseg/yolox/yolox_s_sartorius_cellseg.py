@@ -44,8 +44,7 @@ train_pipeline = [
         brightness_delta=32,
         contrast_range=(0.5, 1.5),
         saturation_range=(0.5, 1.5),
-        hue_delta=18
-    ),
+        hue_delta=18),
     dict(type='RandomFlip', prob=0.5),
     dict(type='DumpImage', max_imgs=100, dump_dir='dump'),
     # According to the official implementation, multi-scale

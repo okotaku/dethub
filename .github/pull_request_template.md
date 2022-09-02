@@ -10,9 +10,9 @@ Please briefly describe what modification is made in this PR.
 
 ## Results (Optional)
 
-| Dataset |           Model            | box AP |
-| :------: | :------------------------: | :----: | 
-|      |     |    |
+| Dataset | Model | box AP |
+| :-----: | :---: | :----: |
+|         |       |        |
 
 ## Use cases (Optional)
 

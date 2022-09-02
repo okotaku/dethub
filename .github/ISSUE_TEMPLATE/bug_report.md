@@ -40,4 +40,3 @@ The command you executed.
 Add any other context about the problem here.
 
 \[here\]
-
