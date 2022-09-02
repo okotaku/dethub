@@ -29,7 +29,8 @@ metainfo = dict(
     CLASSES=[
         'shsy5y', 'a172', 'bt474', 'bv2', 'huh7', 'mcf7', 'skov3', 'skbr3'
     ],
-    PALETTE=[(220, 20, 60)])
+    PALETTE=[(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230),
+             (106, 0, 228), (0, 60, 100), (0, 80, 100), (0, 0, 70)])
 train_pipeline = [
     dict(type='Mosaic', img_scale=img_scale, pad_val=114.0),
     dict(
