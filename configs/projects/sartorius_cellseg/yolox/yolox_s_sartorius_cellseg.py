@@ -186,7 +186,6 @@ custom_hooks = [
         momentum=0.0002,
         update_buffers=True,
         strict_load=False,
-        total_iter=500,
         priority=49)
 ]
 
