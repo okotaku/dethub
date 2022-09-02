@@ -1,7 +1,7 @@
 import copy
 import os
 
-import mmcv
+import mmengine
 from pycocotools.coco import COCO
 from tqdm import tqdm
 
@@ -53,12 +53,12 @@ def to_multiclass(ann_file):
 
 
 if __name__ == '__main__':
-    mmcv.dump(
+    mmengine.dump(
         to_multiclass('data/livecell_coco_train.json'),
         'data/livecell_coco_train_8class.json')
-    mmcv.dump(
+    mmengine.dump(
         to_multiclass('data/livecell_coco_val.json'),
         'data/livecell_coco_val_8class.json')
-    mmcv.dump(
+    mmengine.dump(
         to_multiclass('data/livecell_coco_test.json'),
         'data/livecell_coco_test_8class.json')
