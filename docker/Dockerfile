@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 ADD requirements.txt  /tmp/requirements.txt
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir openmim==0.3.0 && \
-    mim install mmcv==2.0.0rc1 && \
+    pip install mmcv==2.0.0rc1 -f https://download.openmmlab.com/mmcv/dist/cu116/torch1.12.0/index.html && \
     pip install -r /tmp/requirements.txt && \
     pip uninstall -y opencv-python && pip install opencv-python==4.5.1.48
 

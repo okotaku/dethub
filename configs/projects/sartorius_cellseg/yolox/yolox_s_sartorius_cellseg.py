@@ -37,9 +37,15 @@ train_pipeline = [
     dict(
         type='MixUp',
         img_scale=img_scale,
-        ratio_range=(0.8, 1.6),
+        ratio_range=(0.5, 1.5),
         pad_val=114.0),
-    dict(type='YOLOXHSVRandomAug'),
+    dict(
+        type='PhotoMetricDistortion',
+        brightness_delta=32,
+        contrast_range=(0.5, 1.5),
+        saturation_range=(0.5, 1.5),
+        hue_delta=18
+    ),
     dict(type='RandomFlip', prob=0.5),
     dict(type='DumpImage', max_imgs=100, dump_dir='dump'),
     # According to the official implementation, multi-scale
@@ -71,7 +77,7 @@ train_dataset = dict(
             dict(type='LoadImageFromFile', file_client_args=file_client_args),
             dict(type='LoadAnnotations', with_bbox=True)
         ],
-        filter_cfg=dict(filter_empty_gt=False, min_size=32)),
+        filter_cfg=dict(filter_empty_gt=False)),
     pipeline=train_pipeline)
 
 test_pipeline = [
@@ -115,8 +121,8 @@ val_evaluator = dict(
 test_evaluator = val_evaluator
 
 # training settings
-max_epochs = 300
-num_last_epochs = 15
+max_epochs = 30
+num_last_epochs = 5
 interval = 10
 
 train_cfg = dict(
@@ -137,25 +143,25 @@ optim_wrapper = dict(
 # learning rate
 param_scheduler = [
     dict(
-        # use quadratic formula to warm up 5 epochs
+        # use quadratic formula to warm up 3 epochs
         # and lr is updated by iteration
         # TODO: fix default scope in get function
         type='mmdet.QuadraticWarmupLR',
         by_epoch=True,
         begin=0,
-        end=5,
+        end=3,
         convert_to_iter_based=True),
     dict(
-        # use cosine lr from 5 to 285 epoch
+        # use cosine lr from 3 to -num_last_epochs epoch
         type='CosineAnnealingLR',
         eta_min=base_lr * 0.05,
-        begin=5,
+        begin=3,
         T_max=max_epochs - num_last_epochs,
         end=max_epochs - num_last_epochs,
         by_epoch=True,
         convert_to_iter_based=True),
     dict(
-        # use fixed lr during last 15 epochs
+        # use fixed lr during last -num_last_epochs epochs
         type='ConstantLR',
         by_epoch=True,
         factor=1,
@@ -178,9 +184,10 @@ custom_hooks = [
     dict(
         type='EMAHook',
         ema_type='ExpMomentumEMA',
-        momentum=0.0001,
+        momentum=0.0002,
         update_buffers=True,
         strict_load=False,
+        total_iter=500,
         priority=49)
 ]
 
