@@ -24,7 +24,7 @@ wget http://livecell-dataset.s3.eu-central-1.amazonaws.com/LIVECell_dataset_2021
 2. Download coco format json.
 
 ```
-kaggle datasets download https://www.kaggle.com/datasets/takuok/sartorius-livecell
+kaggle datasets download https://www.kaggle.com/datasets/takuok/livecellcocoformat
 ```
 
 \*We prepared coco format files from [this script](../../../tools/dataset_converters/prepare_livecell.py).
@@ -64,3 +64,7 @@ Run train
 ```
 $ docker compose exec dethub python /opt/site-packages/mmdet/.mim/tools/train.py configs/projects/livecell/yolox/yolox_s_livecell.py
 ```
+
+## Acknowledgement
+
+[Kaggle Sartorius - Cell Instance Segmentation 1st place solution](https://github.com/tascj/kaggle-sartorius-cell-instance-segmentation-solution)

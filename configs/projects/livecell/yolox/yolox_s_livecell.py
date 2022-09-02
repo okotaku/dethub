@@ -73,8 +73,8 @@ train_dataset = dict(
         type=dataset_type,
         metainfo=metainfo,
         data_root=data_root,
-        ann_file='dtrain.json',
-        data_prefix=dict(img=''),
+        ann_file='livecell_coco_train_8class.json',
+        data_prefix=dict(img='images/livecell_train_val_images/'),
         pipeline=[
             dict(type='LoadImageFromFile', file_client_args=file_client_args),
             dict(type='LoadAnnotations', with_bbox=True)
@@ -112,18 +112,20 @@ val_dataloader = dict(
         type=dataset_type,
         metainfo=metainfo,
         data_root=data_root,
-        ann_file='dval.json',
-        data_prefix=dict(img=''),
+        ann_file='livecell_coco_val_8class.json',
+        data_prefix=dict(img='images/livecell_train_val_images/'),
         test_mode=True,
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
 val_evaluator = dict(
-    type='CocoMetric', ann_file=data_root + 'dval.json', metric='bbox')
+    type='CocoMetric',
+    ann_file=data_root + 'livecell_coco_val_8class.json',
+    metric='bbox')
 test_evaluator = val_evaluator
 
 # training settings
-max_epochs = 30
+max_epochs = 15
 num_last_epochs = 5
 interval = 10
 
@@ -145,19 +147,19 @@ optim_wrapper = dict(
 # learning rate
 param_scheduler = [
     dict(
-        # use quadratic formula to warm up 3 epochs
+        # use quadratic formula to warm up 1 epochs
         # and lr is updated by iteration
         # TODO: fix default scope in get function
         type='mmdet.QuadraticWarmupLR',
         by_epoch=True,
         begin=0,
-        end=3,
+        end=1,
         convert_to_iter_based=True),
     dict(
-        # use cosine lr from 3 to -num_last_epochs epoch
+        # use cosine lr from 1 to -num_last_epochs epoch
         type='CosineAnnealingLR',
         eta_min=base_lr * 0.05,
-        begin=3,
+        begin=1,
         T_max=max_epochs - num_last_epochs,
         end=max_epochs - num_last_epochs,
         by_epoch=True,

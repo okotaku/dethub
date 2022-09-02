@@ -48,3 +48,7 @@ Run train
 ```
 $ docker compose exec dethub python /opt/site-packages/mmdet/.mim/tools/train.py configs/projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg.py
 ```
+
+## Acknowledgement
+
+[Kaggle Sartorius - Cell Instance Segmentation 1st place solution](https://github.com/tascj/kaggle-sartorius-cell-instance-segmentation-solution)
