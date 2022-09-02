@@ -1,5 +1,4 @@
 import copy
-import os
 
 import mmengine
 from pycocotools.coco import COCO
@@ -33,7 +32,7 @@ def to_multiclass(ann_file):
         img_info['id'] = img_id
         filename = img_info['file_name']
         subdir = filename.split('_')[0]
-        img_info['file_name'] = os.path.join(subdir, filename)
+        img_info['file_name'] = filename
         cat = subdir.lower()
 
         img_infos.append(img_info)

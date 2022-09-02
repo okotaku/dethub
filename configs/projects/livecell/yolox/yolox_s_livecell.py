@@ -127,7 +127,7 @@ test_evaluator = val_evaluator
 # training settings
 max_epochs = 15
 num_last_epochs = 5
-interval = 10
+interval = 1
 
 train_cfg = dict(
     type='EpochBasedTrainLoop', max_epochs=max_epochs, val_interval=interval)
