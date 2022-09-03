@@ -13,7 +13,7 @@ class WandbVisBackend(Base):
                  init_kwargs: Optional[dict] = None,
                  define_metric_cfg: Optional[dict] = None,
                  commit: Optional[bool] = True):
-        super().__init__(save_dir)
+        super(Base, self).__init__(save_dir)
         self._init_kwargs = init_kwargs
         self._define_metric_cfg = define_metric_cfg
         self._commit = commit
