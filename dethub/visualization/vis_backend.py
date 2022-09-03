@@ -33,7 +33,7 @@ class WandbVisBackend(Base):
                 'Please run "pip install wandb" to install wandb')
 
         wandb.init(**self._init_kwargs)
-        if self.define_metric_cfg is not None:
-            for metric, summary in self.define_metric_cfg.items():
+        if self._define_metric_cfg is not None:
+            for metric, summary in self._define_metric_cfg.items():
                 wandb.define_metric(f'val/{metric}', summary=summary)
         self._wandb = wandb
