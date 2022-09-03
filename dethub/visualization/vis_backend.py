@@ -1,8 +1,10 @@
 import os
 from typing import Optional
 
+import numpy as np
 from mmengine.registry import VISBACKENDS
 from mmengine.visualization import WandbVisBackend as Base
+from mmengine.visualization.vis_backend import force_init_env
 
 
 @VISBACKENDS.register_module(force=True)
@@ -37,3 +39,26 @@ class WandbVisBackend(Base):
             for metric, summary in self._define_metric_cfg.items():
                 wandb.define_metric(metric, summary=summary)
         self._wandb = wandb
+
+    @force_init_env
+    def add_image(self,
+                  name: str,
+                  image: np.ndarray,
+                  step: int = 0,
+                  **kwargs) -> None:
+        """Record the image to wandb.
+
+        Args:
+            name (str): The image identifier.
+            image (np.ndarray): The image to be saved. The format
+                should be RGB.
+            step (int): Useless parameter. Wandb does not
+                need this parameter. Default to 0.
+        """
+        try:
+            import wandb
+        except ImportError:
+            raise ImportError(
+                'Please run "pip install wandb" to install wandb')
+        image = wandb.Image(image)
+        self._wandb.log({name: image}, commit=self._commit)
