@@ -201,17 +201,24 @@ class SimOTAAssigner(BaseAssigner):
         pairwise_ious = self.iou_calculator(valid_decoded_bbox, gt_bboxes)
         iou_cost = -torch.log(pairwise_ious + EPS)
 
+        gt_onehot_label = (
+            F.one_hot(gt_labels.to(torch.int64),
+                      pred_scores.shape[-1]).float().unsqueeze(0).repeat(
+                          num_valid, 1, 1))
+
         valid_pred_scores = valid_pred_scores.unsqueeze(1).repeat(1, num_gt, 1)
         # disable AMP autocast and calculate BCE with FP32 to avoid overflow
         with torch.cuda.amp.autocast(enabled=False):
-            cost_matrix = get_cls_cost(
-                valid_pred_scores.to(dtype=torch.float32),
-                gt_labels).to(dtype=valid_pred_scores.dtype)
+            cls_cost = (
+                F.binary_cross_entropy(
+                    valid_pred_scores.to(dtype=torch.float32),
+                    gt_onehot_label,
+                    reduction='none',
+                ).sum(-1).to(dtype=valid_pred_scores.dtype))
 
-        cost_matrix *= self.cls_weight
-        iou_cost *= self.iou_weight
-        cost_matrix += iou_cost
-        cost_matrix[~is_in_boxes_and_center] = INF
+        cost_matrix = (
+            cls_cost * self.cls_weight + iou_cost * self.iou_weight +
+            (~is_in_boxes_and_center) * INF)
 
         matched_pred_ious, matched_gt_inds = \
             self.dynamic_k_matching(
@@ -228,7 +235,8 @@ class SimOTAAssigner(BaseAssigner):
         return AssignResult(
             num_gt, assigned_gt_inds, max_overlaps, labels=assigned_labels)
 
-    def get_in_gt_and_in_center_info(self, priors, gt_bboxes):
+    def get_in_gt_and_in_center_info(
+            self, priors: Tensor, gt_bboxes: Tensor) -> Tuple[Tensor, Tensor]:
         return get_in_gt_and_in_center_info(priors, gt_bboxes,
                                             self.center_radius)
 
