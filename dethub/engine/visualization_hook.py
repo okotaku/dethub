@@ -41,7 +41,8 @@ class DetVisualizationHook(Base):
 
         if total_curr_iter % self.interval == 0:
             self._visualizer.add_datasample(
-                osp.basename(img_path) if self.show else img_path,
+                osp.basename(img_path) if self.show else
+                (f'iter{runner.iter}/{osp.basename(img_path)}'),
                 img,
                 data_sample=outputs[0],
                 show=self.show,
