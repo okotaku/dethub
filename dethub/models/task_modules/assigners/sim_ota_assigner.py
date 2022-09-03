@@ -5,8 +5,8 @@ import torch.nn.functional as F
 from mmengine.structures import InstanceData
 from torch import Tensor
 
-from mmdet.model.task_modules.assigners.assign_result import AssignResult
-from mmdet.model.task_modules.assigners.base_assigner import BaseAssigner
+from mmdet.models.task_modules.assigners.assign_result import AssignResult
+from mmdet.models.task_modules.assigners.base_assigner import BaseAssigner
 from mmdet.registry import TASK_UTILS
 from mmdet.utils import ConfigType
 
