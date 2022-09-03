@@ -35,5 +35,5 @@ class WandbVisBackend(Base):
         wandb.init(**self._init_kwargs)
         if self._define_metric_cfg is not None:
             for metric, summary in self._define_metric_cfg.items():
-                wandb.define_metric(f'val/{metric}', summary=summary)
+                wandb.define_metric(metric, summary=summary)
         self._wandb = wandb

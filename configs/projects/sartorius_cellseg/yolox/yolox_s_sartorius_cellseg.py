@@ -195,8 +195,9 @@ vis_backends = [
     dict(type='LocalVisBackend'),
     dict(
         type='WandbVisBackend',
-        init_kwargs=dict(project='livecell', name='yolox_s_sartorius_cellseg'),
-        define_metric_cfg=dict(bbox_mAP='max'))
+        init_kwargs=dict(
+            project='sartorius_cellseg', name='yolox_s_sartorius_cellseg'),
+        define_metric_cfg={'coco/bbox_mAP': 'max'})
 ]
 visualizer = dict(vis_backends=vis_backends)
 

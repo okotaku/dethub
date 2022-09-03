@@ -194,7 +194,7 @@ vis_backends = [
     dict(
         type='WandbVisBackend',
         init_kwargs=dict(project='gbr_cots', name='yolox_s_gbr_cots'),
-        define_metric_cfg=dict(bbox_mAP='max'))
+        define_metric_cfg={'coco/bbox_mAP': 'max'})
 ]
 visualizer = dict(vis_backends=vis_backends)
 
