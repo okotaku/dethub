@@ -191,6 +191,14 @@ custom_hooks = [
         strict_load=False,
         priority=49)
 ]
+vis_backends = [
+    dict(type='LocalVisBackend'),
+    dict(
+        type='WandbVisBackend',
+        init_kwargs=dict(project='livecell', name='yolox_s_sartorius_cellseg'),
+        define_metric_cfg=dict(bbox_mAP='max'))
+]
+visualizer = dict(vis_backends=vis_backends)
 
 load_from = 'https://download.openmmlab.com/mmdetection/v2.0/yolox/yolox_s_8x8_300e_coco/yolox_s_8x8_300e_coco_20211121_095711-4592a793.pth'  # noqa
 

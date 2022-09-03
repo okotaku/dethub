@@ -200,7 +200,8 @@ vis_backends = [
     dict(type='LocalVisBackend'),
     dict(
         type='WandbVisBackend',
-        init_kwargs=dict(project='livecell', name='yolox_s_livecell'))
+        init_kwargs=dict(project='livecell', name='yolox_s_livecell'),
+        define_metric_cfg=dict(bbox_mAP='max'))
 ]
 visualizer = dict(vis_backends=vis_backends)
 
