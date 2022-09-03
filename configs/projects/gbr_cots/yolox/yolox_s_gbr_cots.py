@@ -175,7 +175,7 @@ default_hooks = dict(
         interval=interval,
         max_keep_ckpts=3  # only keep latest 3 checkpoints
     ),
-    visualization=dict(draw=True))
+    visualization=dict(draw=True, interval=1))
 custom_hooks = [
     dict(
         type='YOLOXModeSwitchHook',
