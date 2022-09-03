@@ -1,7 +1,8 @@
 _base_ = ['/opt/site-packages/mmdet/.mim/configs/_base_/default_runtime.py']
 custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
+fp16 = dict(loss_scale=512.)
 
-img_scale = (640, 640)  # height, width
+img_scale = (1536, 1536)  # height, width
 
 # model settings
 num_classes = 8
@@ -13,7 +14,7 @@ model = dict(
         batch_augments=[
             dict(
                 type='BatchSyncRandomResize',
-                random_size_range=(480, 800),
+                random_size_range=(1024, 2048),
                 size_divisor=32,
                 interval=10)
         ]),
@@ -97,13 +98,13 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=32,
+    batch_size=16,
     num_workers=4,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     dataset=train_dataset)
 val_dataloader = dict(
-    batch_size=32,
+    batch_size=16,
     num_workers=4,
     persistent_workers=True,
     drop_last=False,

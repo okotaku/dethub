@@ -45,7 +45,10 @@ $ docker compose up -d dethub
 Run train
 
 ```
+# single gpu
 $ docker compose exec dethub python /opt/site-packages/mmdet/.mim/tools/train.py configs/projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg.py
+# multi gpus
+$ docker compose exec dethub python -m torch.distributed.launch --nproc_per_node=2 /opt/site-packages/mmdet/.mim/tools/train.py configs/projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg.py --launcher pytorch
 ```
 
 ## Acknowledgement
