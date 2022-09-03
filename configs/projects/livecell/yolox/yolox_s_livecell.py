@@ -120,7 +120,7 @@ val_dataloader = dict(
 test_dataloader = val_dataloader
 
 val_evaluator = dict(
-    type='CocoMetric',
+    type='CocoFastMetric',
     ann_file=data_root + 'livecell_coco_val_8class.json',
     metric='bbox')
 test_evaluator = val_evaluator
@@ -183,7 +183,7 @@ default_hooks = dict(
         interval=interval,
         max_keep_ckpts=3  # only keep latest 3 checkpoints
     ),
-    visualization=dict(draw=True, interval=1))
+    visualization=dict(draw=True, interval=5))
 custom_hooks = [
     dict(
         type='YOLOXModeSwitchHook',

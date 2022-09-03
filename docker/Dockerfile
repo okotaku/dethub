@@ -13,7 +13,8 @@ RUN pip install --upgrade pip && \
     pip install --no-cache-dir openmim==0.3.0 && \
     pip install -r /tmp/requirements.txt && \
     pip uninstall -y opencv-python && pip install opencv-python==4.5.1.48 && \
-    MMCV_WITH_OPS=1 pip install mmcv==2.0.0rc1
+    MMCV_WITH_OPS=1 pip install mmcv==2.0.0rc1 && \
+    pip install 'git+https://github.com/facebookresearch/detectron2.git'
 
 # Language settings
 ENV LANG C.UTF-8

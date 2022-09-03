@@ -116,7 +116,7 @@ val_dataloader = dict(
 test_dataloader = val_dataloader
 
 val_evaluator = dict(
-    type='CocoMetric', ann_file=data_root + 'dval.json', metric='bbox')
+    type='CocoFastMetric', ann_file=data_root + 'dval.json', metric='bbox')
 test_evaluator = val_evaluator
 
 # training settings
