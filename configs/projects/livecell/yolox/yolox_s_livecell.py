@@ -130,7 +130,10 @@ num_last_epochs = 5
 interval = 5
 
 train_cfg = dict(
-    type='EpochBasedTrainLoop', max_epochs=max_epochs, val_interval=interval)
+    type='EpochBasedTrainLoop',
+    max_epochs=max_epochs,
+    val_interval=interval,
+    dynamic_intervals=[(max_epochs - num_last_epochs, 1)])
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 

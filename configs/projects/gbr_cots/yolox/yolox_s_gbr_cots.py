@@ -4,7 +4,7 @@ custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 img_scale = (640, 640)  # height, width
 
 # model settings
-num_classes = 3
+num_classes = 1
 model = dict(
     type='YOLOX',
     data_preprocessor=dict(
@@ -25,9 +25,7 @@ data_root = 'data/'
 dataset_type = 'CocoDataset'
 file_client_args = dict(backend='disk')
 
-metainfo = dict(
-    CLASSES=['shsy5y', 'astro', 'cort'],
-    PALETTE=[(220, 20, 60), (119, 11, 32), (0, 0, 142)])
+metainfo = dict(CLASSES=['gbr'], PALETTE=[(220, 20, 60)])
 train_pipeline = [
     dict(type='Mosaic', img_scale=img_scale, pad_val=114.0),
     dict(
@@ -70,7 +68,7 @@ train_dataset = dict(
         type=dataset_type,
         metainfo=metainfo,
         data_root=data_root,
-        ann_file='dtrain.json',
+        ann_file='dtrain_g0.json',
         data_prefix=dict(img=''),
         pipeline=[
             dict(type='LoadImageFromFile', file_client_args=file_client_args),
@@ -109,18 +107,20 @@ val_dataloader = dict(
         type=dataset_type,
         metainfo=metainfo,
         data_root=data_root,
-        ann_file='dval.json',
+        ann_file='dval_g0.json',
         data_prefix=dict(img=''),
         test_mode=True,
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
 val_evaluator = dict(
-    type='CocoMetric', ann_file=data_root + 'dval.json', metric='bbox')
+    type='CocoMetric',
+    ann_file=data_root + 'livecell_coco_val_8class.json',
+    metric='bbox')
 test_evaluator = val_evaluator
 
 # training settings
-max_epochs = 30
+max_epochs = 20
 num_last_epochs = 5
 interval = 5
 
@@ -145,19 +145,19 @@ optim_wrapper = dict(
 # learning rate
 param_scheduler = [
     dict(
-        # use quadratic formula to warm up 3 epochs
+        # use quadratic formula to warm up 1 epochs
         # and lr is updated by iteration
         # TODO: fix default scope in get function
         type='mmdet.QuadraticWarmupLR',
         by_epoch=True,
         begin=0,
-        end=3,
+        end=1,
         convert_to_iter_based=True),
     dict(
-        # use cosine lr from 3 to -num_last_epochs epoch
+        # use cosine lr from 1 to -num_last_epochs epoch
         type='CosineAnnealingLR',
         eta_min=base_lr * 0.05,
-        begin=3,
+        begin=1,
         T_max=max_epochs - num_last_epochs,
         end=max_epochs - num_last_epochs,
         by_epoch=True,
@@ -190,6 +190,12 @@ custom_hooks = [
         update_buffers=True,
         strict_load=False,
         priority=49)
+]
+vis_backends = [
+    dict(type='LocalVisBackend'),
+    dict(
+        type='WandbVisBackend',
+        init_kwargs=dict(project='gbr_cots', name='yolox_s_gbr_cots'))
 ]
 
 load_from = 'https://download.openmmlab.com/mmdetection/v2.0/yolox/yolox_s_8x8_300e_coco/yolox_s_8x8_300e_coco_20211121_095711-4592a793.pth'  # noqa

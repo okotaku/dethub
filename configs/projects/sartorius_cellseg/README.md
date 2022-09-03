@@ -13,7 +13,6 @@ kaggle competitions download -c sartorius-cell-instance-segmentation
 2. Download coco format json.
 
 ```
-kaggle competitions download -c sartorius-cell-instance-segmentation
 kaggle datasets download https://www.kaggle.com/datasets/takuok/sartorius-cocoformat
 ```
 
