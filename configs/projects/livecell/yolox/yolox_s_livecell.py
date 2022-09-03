@@ -126,9 +126,9 @@ val_evaluator = dict(
 test_evaluator = val_evaluator
 
 # training settings
-max_epochs = 30
-num_last_epochs = 5
-interval = 5
+max_epochs = 50
+num_last_epochs = 10
+interval = 10
 
 train_cfg = dict(
     type='EpochBasedTrainLoop',
@@ -151,19 +151,19 @@ optim_wrapper = dict(
 # learning rate
 param_scheduler = [
     dict(
-        # use quadratic formula to warm up 1 epochs
+        # use quadratic formula to warm up 5 epochs
         # and lr is updated by iteration
         # TODO: fix default scope in get function
         type='mmdet.QuadraticWarmupLR',
         by_epoch=True,
         begin=0,
-        end=1,
+        end=5,
         convert_to_iter_based=True),
     dict(
-        # use cosine lr from 1 to -num_last_epochs epoch
+        # use cosine lr from 5 to -num_last_epochs epoch
         type='CosineAnnealingLR',
         eta_min=base_lr * 0.05,
-        begin=1,
+        begin=5,
         T_max=max_epochs - num_last_epochs,
         end=max_epochs - num_last_epochs,
         by_epoch=True,
