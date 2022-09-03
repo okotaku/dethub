@@ -202,6 +202,7 @@ vis_backends = [
         type='WandbVisBackend',
         init_kwargs=dict(project='livecell', name='yolox_s_livecell'))
 ]
+visualizer = dict(vis_backends=vis_backends)
 
 load_from = 'https://download.openmmlab.com/mmdetection/v2.0/yolox/yolox_s_8x8_300e_coco/yolox_s_8x8_300e_coco_20211121_095711-4592a793.pth'  # noqa
 
