@@ -98,13 +98,13 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=4,
+    batch_size=2,
     num_workers=4,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     dataset=train_dataset)
 val_dataloader = dict(
-    batch_size=4,
+    batch_size=2,
     num_workers=4,
     persistent_workers=True,
     drop_last=False,
@@ -202,7 +202,7 @@ vis_backends = [
     dict(type='LocalVisBackend'),
     dict(
         type='WandbVisBackend',
-        init_kwargs=dict(project='livecell', name='yolox_s_livecell'),
+        init_kwargs=dict(project='livecell', name='yolox_x_livecell'),
         define_metric_cfg={'coco/bbox_mAP': 'max'})
 ]
 visualizer = dict(vis_backends=vis_backends)
