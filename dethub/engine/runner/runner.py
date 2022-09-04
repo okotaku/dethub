@@ -40,7 +40,7 @@ class Runner(Base):
                         filename: str,
                         map_location: Union[str, Callable] = 'cpu',
                         strict: bool = False,
-                        revise_keys: list = [(r'^module.', '')]):
+                        revise_keys: list = [('module.', '')]):
         """Load checkpoint from given ``filename``.
 
         Args:
