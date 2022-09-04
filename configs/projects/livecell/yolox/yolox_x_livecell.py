@@ -14,7 +14,7 @@ model = dict(
         batch_augments=[
             dict(
                 type='BatchSyncRandomResize',
-                random_size_range=(1024, 2048),
+                random_size_range=(1280, 1792),
                 size_divisor=32,
                 interval=10)
         ]),
