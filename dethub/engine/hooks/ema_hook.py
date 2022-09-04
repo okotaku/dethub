@@ -7,7 +7,7 @@ from mmengine.registry import HOOKS
 from mmengine.runner.checkpoint import _load_checkpoint_to_model
 
 
-@HOOKS.register_module()
+@HOOKS.register_module(force=True)
 class EMAHook(Base):
 
     def after_load_checkpoint(self,
