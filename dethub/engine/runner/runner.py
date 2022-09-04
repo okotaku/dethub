@@ -3,15 +3,17 @@ from typing import Callable, Union
 
 from mmengine.model import is_model_wrapper
 from mmengine.registry import RUNNERS
-from mmengine.runner.checkpoint import _load_checkpoint, load_state_dict
+from mmengine.runner.checkpoint import (_load_checkpoint,
+                                        _load_checkpoint_to_model,
+                                        load_state_dict)
 from mmengine.runner.runner import Runner as Base
 
 
-def _load_checkpoint_to_model(model,
-                              checkpoint,
-                              strict=False,
-                              logger=None,
-                              revise_keys=[(r'^module\.', '')]):
+def __load_checkpoint_to_model(model,
+                               checkpoint,
+                               strict=False,
+                               logger=None,
+                               revise_keys=[(r'^module\.', '')]):
 
     # get state_dict from checkpoint
     if 'state_dict' in checkpoint:
@@ -40,7 +42,7 @@ class Runner(Base):
                         filename: str,
                         map_location: Union[str, Callable] = 'cpu',
                         strict: bool = False,
-                        revise_keys: list = [('module.', '')]):
+                        revise_keys: list = [(r'^module.module.', '')]):
         """Load checkpoint from given ``filename``.
 
         Args:
