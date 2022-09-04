@@ -207,7 +207,6 @@ vis_backends = [
 ]
 visualizer = dict(vis_backends=vis_backends)
 
-runner_type = 'Runner'
 load_from = 'https://download.openmmlab.com/mmdetection/v2.0/yolox/yolox_s_8x8_300e_coco/yolox_s_8x8_300e_coco_20211121_095711-4592a793.pth'  # noqa
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
