@@ -66,8 +66,6 @@ class Runner(Base):
         else:
             model = self.model
 
-        print(revise_keys)
-        kk  # noqa
         checkpoint = _load_checkpoint_to_model(
             model, checkpoint, strict, revise_keys=revise_keys)
 
