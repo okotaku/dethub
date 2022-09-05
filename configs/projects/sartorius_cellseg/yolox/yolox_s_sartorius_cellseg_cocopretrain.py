@@ -200,7 +200,8 @@ vis_backends = [
     dict(
         type='WandbVisBackend',
         init_kwargs=dict(
-            project='sartorius_cellseg', name='yolox_s_sartorius_cellseg'),
+            project='sartorius_cellseg',
+            name='yolox_s_sartorius_cellseg_cocopretrain'),
         define_metric_cfg={'coco/bbox_mAP': 'max'})
 ]
 visualizer = dict(vis_backends=vis_backends)
