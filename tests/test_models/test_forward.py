@@ -129,7 +129,9 @@ def _demo_mm_inputs(input_shape=(1, 3, 300, 300),
 
 @pytest.mark.parametrize(
     'cfg_file',
-    ['projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg.py'])
+    [
+        'projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg_cocopretrain.py'  # noqa
+    ])
 def test_single_stage_forward_gpu(cfg_file):
     if not torch.cuda.is_available():
         import pytest

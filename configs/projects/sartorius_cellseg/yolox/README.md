@@ -14,9 +14,9 @@ In this report, we present some experienced improvements to YOLO series, forming
 
 ## Results and Models
 
-|         Backbone          | box AP |                 Config                 |         Download         |
-| :-----------------------: | :----: | :------------------------------------: | :----------------------: |
-| yolox_s_sartorius_cellseg |        | [config](yolox_s_sartorius_cellseg.py) | [model](<>) \| [log](<>) |
+|                Backbone                | box AP |                       Config                        |         Download         |
+| :------------------------------------: | :----: | :-------------------------------------------------: | :----------------------: |
+| yolox_s_sartorius_cellseg_cocopretrain |        | [config](yolox_s_sartorius_cellseg_cocopretrain.py) | [model](<>) \| [log](<>) |
 
 ## Citation
 
