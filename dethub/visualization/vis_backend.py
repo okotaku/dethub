@@ -55,10 +55,5 @@ class WandbVisBackend(Base):
             step (int): Useless parameter. Wandb does not
                 need this parameter. Default to 0.
         """
-        try:
-            import wandb
-        except ImportError:
-            raise ImportError(
-                'Please run "pip install wandb" to install wandb')
-        image = wandb.Image(image)
+        image = self._wandb.Image(image)
         self._wandb.log({name: image}, commit=self._commit)
