@@ -172,6 +172,7 @@ param_scheduler = [
 
 default_hooks = dict(
     checkpoint=dict(
+        save_best='auto',
         interval=interval,
         max_keep_ckpts=3  # only keep latest 3 checkpoints
     ),
