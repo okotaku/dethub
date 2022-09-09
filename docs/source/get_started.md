@@ -19,4 +19,6 @@ Install dethub
 
 ```
 $ docker compose exec dethub pip install .
+# optional install
+$ docker compose exec dethub pip install -r docker/dev.txt
 ```

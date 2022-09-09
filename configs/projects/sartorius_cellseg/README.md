@@ -1,4 +1,4 @@
-# Sartorius - Cell Instance Segmentation
+# Sartorius - Cell Instance Segmentation (Kaggle)
 
 Kaggle [Sartorius - Cell Instance Segmentation](https://www.kaggle.com/c/sartorius-cell-instance-segmentation)
 

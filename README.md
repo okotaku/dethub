@@ -1,14 +1,30 @@
 # DetHub
 
+[![build](https://github.com/okotaku/dethub/actions/workflows/build.yml/badge.svg)](https://github.com/okotaku/dethub/actions/workflows/build.yml)
+[![license](https://img.shields.io/github/license/okotaku/dethub.svg)](https://github.com/okotaku/dethub/blob/main/LICENSE)
+
 ## Introduction
 
-DetHub is an open source object detection experiments hub.
+DetHub is an open source object detection / instance segmentation experiments hub. The main difference from MMDetection is
+
+- Support more and more datasets for better open source worlds
+- Provide reproducible configs for these datasets
+- Provide pretrained models, logs and inference codes for these datasets
 
 Documentation: [docs](docs)
 
+## Supported Datasets
+
+- [x] [TensorFlow - Help Protect the Great Barrier Reef (Kaggle)](configs/projects/gbr_cots/)
+- [x] [LIVECell dataset](configs/projects/livecell/)
+- [x] [Sartorius - Cell Instance Segmentation (Kaggle)](configs/projects/sartorius_cellseg/)
+
 ## Get Started
 
-Please refer to [installation.rst](docs/source/get_started.rst) for get started.
+Please refer to [get_started.rst](docs/source/get_started.rst) for get started.
+Other tutorials for:
+
+- [run](docs/source/run.md)
 
 ## Contributing
 

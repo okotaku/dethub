@@ -6,6 +6,8 @@ import warnings
 from setuptools import find_packages as _find_packages
 from setuptools import setup
 
+from torch.utils.cpp_extension import BuildExtension, CUDAExtension
+
 
 def readme():
     with open('README.md', encoding='utf-8') as f:
@@ -176,5 +178,17 @@ if __name__ == '__main__':
             'all': parse_requirements('requirements.txt'),
             'tests': parse_requirements('requirements/tests.txt'),
         },
-        ext_modules=[],
-        zip_safe=False)
+        ext_modules=[
+            CUDAExtension(
+                name='simota_cuda_ops',
+                sources=[
+                    'dethub/simota_cuda_ops/pybind.cpp',
+                    'dethub/simota_cuda_ops/check_prior_in_gt_kernel.cu',
+                    'dethub/simota_cuda_ops/check_prior_in_gt.cpp',
+                    'dethub/simota_cuda_ops/binary_cross_entropy_cost_kernel.cu',  # noqa
+                    'dethub/simota_cuda_ops/binary_cross_entropy_cost.cpp',
+                ],
+                extra_compile_args={'nvcc': ['-O3']})
+        ],
+        zip_safe=False,
+        cmdclass={'build_ext': BuildExtension})
