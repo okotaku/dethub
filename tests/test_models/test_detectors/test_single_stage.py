@@ -32,7 +32,7 @@ class TestSingleStageDetector(TestCase):
         self.assertTrue(detector.bbox_head)
 
     @parameterized.expand([('projects/livecell/yolox/yolox_s_livecell.py',
-                            ('cuda'))])
+                            ('cuda', ))])
     def test_single_stage_forward_loss_mode(self, cfg_file, devices):
         message_hub = MessageHub.get_instance(
             f'test_single_stage_forward_loss_mode-{time.time()}')
@@ -60,7 +60,7 @@ class TestSingleStageDetector(TestCase):
             self.assertIsInstance(losses, dict)
 
     @parameterized.expand([('projects/livecell/yolox/yolox_s_livecell.py',
-                            ('cuda'))])
+                            ('cuda', ))])
     def test_single_stage_forward_predict_mode(self, cfg_file, devices):
         model = get_detector_cfg(cfg_file)
         if 'backbone' in model:
@@ -87,7 +87,7 @@ class TestSingleStageDetector(TestCase):
                 self.assertIsInstance(batch_results[0], DetDataSample)
 
     @parameterized.expand([('projects/livecell/yolox/yolox_s_livecell.py',
-                            ('cuda'))])
+                            ('cuda', ))])
     def test_single_stage_forward_tensor_mode(self, cfg_file, devices):
         model = get_detector_cfg(cfg_file)
         if 'backbone' in model:
