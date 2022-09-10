@@ -14,7 +14,7 @@ from mmengine.runner import Runner
 from mmengine.testing import assert_allclose
 from torch.utils.data import Dataset
 
-from dethub.hooks import EMAHook
+from dethub.engine.hooks import EMAHook
 
 
 class ToyModel(nn.Module):

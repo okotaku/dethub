@@ -7,7 +7,7 @@ import pycocotools.mask as mask_util
 import torch
 from mmengine.fileio import dump
 
-from dethub.evaluation import CocoFastMetric
+from dethub.evaluation.metrics import CocoFastMetric
 
 
 class TestCocoMetric(TestCase):

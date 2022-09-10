@@ -173,11 +173,7 @@ if __name__ == '__main__':
         url='',
         author='dethub Contributors',
         author_email='',
-        install_requires=parse_requirements('requirements/runtime.txt'),
-        extras_require={
-            'all': parse_requirements('requirements.txt'),
-            'tests': parse_requirements('requirements/tests.txt'),
-        },
+        install_requires=parse_requirements('docker/requirements.txt'),
         ext_modules=[
             CUDAExtension(
                 name='simota_cuda_ops',
