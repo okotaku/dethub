@@ -13,7 +13,7 @@ def _get_config_directory():
         # For IPython development when this __file__ is not defined
         import dethub
         repo_dpath = dirname(dethub.__file__)
-    config_dpath = join(repo_dpath, 'configs')
+    config_dpath = join(repo_dpath, '.mim/configs')
     if not exists(config_dpath):
         raise Exception('Cannot find config path')
     return config_dpath
