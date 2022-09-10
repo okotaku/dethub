@@ -6,9 +6,9 @@ import torch
 from mmengine.logging import MessageHub
 from parameterized import parameterized
 
+from dethub.testing import get_detector_cfg
 from mmdet.structures import DetDataSample
-from mmdet.testing import demo_mm_inputs, get_detector_cfg
-from mmdet.testing.utils import _get_config_directory
+from mmdet.testing import demo_mm_inputs
 from mmdet.utils import register_all_modules
 
 
@@ -21,9 +21,6 @@ class TestSingleStageDetector(TestCase):
         'projects/livecell/yolox/yolox_s_livecell.py',
     ])
     def test_init(self, cfg_file):
-        config_dpath = _get_config_directory(cfg_file)
-        print(config_dpath)
-        kk  # noqa
         model = get_detector_cfg(cfg_file)
         model.backbone.init_cfg = None
 
