@@ -22,7 +22,8 @@ class TestSingleStageDetector(TestCase):
     ])
     def test_init(self, cfg_file):
         model = get_detector_cfg(cfg_file)
-        model.backbone.init_cfg = None
+        if 'backbone' in model:
+            model.backbone.init_cfg = None
 
         from mmdet.models import build_detector
         detector = build_detector(model)
@@ -38,7 +39,8 @@ class TestSingleStageDetector(TestCase):
         message_hub.update_info('iter', 0)
         message_hub.update_info('epoch', 0)
         model = get_detector_cfg(cfg_file)
-        model.backbone.init_cfg = None
+        if 'backbone' in model:
+            model.backbone.init_cfg = None
 
         from mmdet.models import build_detector
         assert all([device in ['cpu', 'cuda'] for device in devices])
@@ -61,7 +63,8 @@ class TestSingleStageDetector(TestCase):
                             ('cuda'))])
     def test_single_stage_forward_predict_mode(self, cfg_file, devices):
         model = get_detector_cfg(cfg_file)
-        model.backbone.init_cfg = None
+        if 'backbone' in model:
+            model.backbone.init_cfg = None
 
         from mmdet.models import build_detector
         assert all([device in ['cpu', 'cuda'] for device in devices])
@@ -87,7 +90,8 @@ class TestSingleStageDetector(TestCase):
                             ('cuda'))])
     def test_single_stage_forward_tensor_mode(self, cfg_file, devices):
         model = get_detector_cfg(cfg_file)
-        model.backbone.init_cfg = None
+        if 'backbone' in model:
+            model.backbone.init_cfg = None
 
         from mmdet.models import build_detector
         assert all([device in ['cpu', 'cuda'] for device in devices])
