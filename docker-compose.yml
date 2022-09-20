@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  dethub:
+    build: ./
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - PYTHONPATH=/workspace:$PYTHONPATH
+    container_name: dethub
+    tty: true
+    volumes:
+      - $DATA_DIR:/workspace/data
+      - $PWD:/workspace
+    working_dir: /workspace
+    ipc: host
