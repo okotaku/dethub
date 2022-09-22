@@ -18,10 +18,10 @@ $ docker compose exec dethub python tools/image_demo.py configs/projects/gbr_cot
 kaggle competitions download -c tensorflow-great-barrier-reef
 ```
 
-2. Download coco format json.
+2. Download coco format json [kaggle datasets](https://www.kaggle.com/datasets/takuok/gbrcotscocoformat).
 
 ```
-kaggle datasets download https://www.kaggle.com/datasets/takuok/gbrcotscocoformat
+kaggle datasets download takuok/gbrcotscocoformat
 ```
 
 \*We prepared coco format files from [this script](../../../tools/dataset_converters/prepare_gbr_cots.py).

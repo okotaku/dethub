@@ -29,10 +29,10 @@ $ docker compose exec dethub python tools/image_demo.py configs/projects/livecel
 wget http://livecell-dataset.s3.eu-central-1.amazonaws.com/LIVECell_dataset_2021/images.zip
 ```
 
-2. Download coco format json.
+2. Download coco format json [kaggle datasets](https://www.kaggle.com/datasets/takuok/livecellcocoformat).
 
 ```
-kaggle datasets download https://www.kaggle.com/datasets/takuok/livecellcocoformat
+kaggle datasets download takuok/livecellcocoformat
 ```
 
 \*We prepared coco format files from [this script](../../../tools/dataset_converters/prepare_livecell.py).
