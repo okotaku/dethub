@@ -18,10 +18,10 @@ $ docker compose exec dethub python tools/image_demo.py configs/projects/sartori
 kaggle competitions download -c sartorius-cell-instance-segmentation
 ```
 
-2. Download coco format json.
+2. Download coco format json [kaggle datasets](https://www.kaggle.com/datasets/takuok/sartorius-cocoformat).
 
 ```
-kaggle datasets download https://www.kaggle.com/datasets/takuok/sartorius-cocoformat
+kaggle datasets download takuok/sartorius-cocoformat
 ```
 
 \*We prepared coco format files from [this script](../../../tools/dataset_converters/prepare_sartorius_cellseg.py).
