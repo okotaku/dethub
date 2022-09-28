@@ -171,3 +171,10 @@ dmypy.json
 cython_debug/
 
 .idea
+
+# mmlab
+work_dirs/
+artifacts/
+wandb/
+data/
+dump/

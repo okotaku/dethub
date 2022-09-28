@@ -11,7 +11,7 @@ ENV FORCE_CUDA="1"
 WORKDIR /dethub
 COPY ./ /dethub
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir openmim==0.3.1 && \
+    pip install --no-cache-dir openmim==0.3.2 && \
     pip install . && \
     pip uninstall -y opencv-python && pip install opencv-python==4.5.1.48 && \
     MMCV_WITH_OPS=1 pip install mmcv==2.0.0rc1 && \
@@ -21,7 +21,6 @@ RUN pip install --upgrade pip && \
 ENV LANG C.UTF-8
 ENV LANGUAGE en_US
 
-RUN ln -s /opt/conda/lib/python3.8/site-packages /opt/site-packages
 RUN git config --global --add safe.directory /workspace
 
 WORKDIR /workspace

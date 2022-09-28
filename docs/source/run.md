@@ -6,21 +6,21 @@ For basic usage of configs, see [MMDetection Tutorial 1: Learn about Configs](ht
 
 ```
 # single-gpu
-$ docker compose exec dethub python /opt/site-packages/mmdet/.mim/tools/train.py ${CONFIG_FILE}
+$ docker compose exec dethub mim train mmdet ${CONFIG_FILE}
 # Example
-$ docker compose exec dethub python /opt/site-packages/mmdet/.mim/tools/train.py configs/projects/livecell/yolox/yolox_s_livecell.py
+$ docker compose exec dethub mim train mmdet configs/projects/livecell/yolox/yolox_s_livecell.py
 
 # multiple-gpu
-$ docker compose exec dethub python -m torch.distributed.launch --nproc_per_node=${GPUS} /opt/site-packages/mmdet/.mim/tools/train.py ${CONFIG_FILE} --launcher pytorch
+$ docker compose exec dethub mim train mmdet ${CONFIG_FILE} --gpus ${GPUS} --launcher pytorch
 ```
 
 # Test a dataset
 
 ```
 # single-gpu
-$ docker compose exec dethub python /opt/site-packages/mmdet/.mim/tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
+$ docker compose exec dethub mim test mmdet ${CONFIG_FILE} --checkpoint ${CHECKPOINT_FILE}
 # Example
-$ docker compose exec dethub python /opt/site-packages/mmdet/.mim/tools/test.py configs/projects/livecell/yolox/yolox_s_livecell.py work_dirs/yolox_s_livecell/epoch_100.pth
+$ docker compose exec dethub mim test mmdet configs/projects/livecell/yolox/yolox_s_livecell.py --checkpoint work_dirs/yolox_s_livecell/epoch_100.pth
 ```
 
 # Run demo
