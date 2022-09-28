@@ -29,11 +29,6 @@ jobs:
       DEBIAN_FRONTEND: noninteractive
     container:
       image: nvcr.io/nvidia/pytorch:22.07-py3
-    strategy:
-      matrix:
-        include:
-          - mmcv: 1.6.0
-            mmcv_link: "cu115/torch1.11.0"
 
     steps:
       - uses: actions/checkout@v2
@@ -48,7 +43,7 @@ jobs:
       - name: Install mmdet dependencies
         run: |
           pip install setuptools
-          pip install --no-cache-dir openmim==0.3.0 && \
+          pip install --no-cache-dir openmim==0.3.2 && \
           pip install -r requirements/requirements.txt
           pip install -r requirements/tests.txt
           pip uninstall -y opencv-python && pip install opencv-python==4.5.1.48 && \
@@ -57,8 +52,6 @@ jobs:
           python -c "import mmcv"
       - name: Build and install
         run: rm -rf .eggs && pip install -e .
-      - name: Soft link
-        run: ln -s /opt/conda/lib/python3.8/site-packages /opt/site-packages
       - name: Run unittests and generate coverage report
         run: |
           coverage run --branch --source=dethub -m pytest tests/

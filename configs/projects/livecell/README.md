@@ -72,9 +72,9 @@ Run train
 
 ```
 # single gpu
-$ docker compose exec dethub python /opt/site-packages/mmdet/.mim/tools/train.py configs/projects/livecell/yolox/yolox_s_livecell.py
+$ docker compose exec dethub mim train mmdet configs/projects/livecell/yolox/yolox_s_livecell.py
 # multi gpus
-$ docker compose exec dethub python -m torch.distributed.launch --nproc_per_node=2 /opt/site-packages/mmdet/.mim/tools/train.py configs/projects/livecell/yolox/yolox_s_livecell.py --launcher pytorch
+$ docker compose exec dethub mim train mmdet configs/projects/livecell/yolox/yolox_s_livecell.py --gpus 2 --launcher pytorch
 ```
 
 ## Acknowledgement

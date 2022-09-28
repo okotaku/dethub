@@ -1,6 +1,5 @@
 _base_ = [
-    '/opt/site-packages/mmdet/.mim/configs/_base_/default_runtime.py',
-    '../../../_base_/models/yolox_x.py'
+    'mmdet::_base_/default_runtime.py', '../../../_base_/models/yolox_x.py'
 ]
 custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 fp16 = dict(loss_scale=512.)

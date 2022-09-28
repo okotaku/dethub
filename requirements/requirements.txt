@@ -1,7 +1,7 @@
 albumentations
 imgaug
 mmcls==v1.0.0rc0
-mmdet==v3.0.0rc0
+mmdet==v3.0.0rc1
 mmengine
 timm
 ujson

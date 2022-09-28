@@ -1,3 +1,5 @@
 work_dirs/
 artifacts/
 wandb/
+data/
+dump/
