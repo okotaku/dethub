@@ -34,9 +34,7 @@ train_dataset = dict(
         ann_file='dtrain.json',
         data_prefix=dict(img='')))
 
-train_dataloader = dict(
-    batch_size=4,
-    dataset=train_dataset)
+train_dataloader = dict(batch_size=4, dataset=train_dataset)
 val_dataloader = dict(
     batch_size=4,
     dataset=dict(

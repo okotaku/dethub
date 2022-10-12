@@ -38,9 +38,7 @@ train_dataset = dict(
         ann_file='livecell_coco_train_8class.json',
         data_prefix=dict(img='images/livecell_train_val_images/')))
 
-train_dataloader = dict(
-    batch_size=2,
-    dataset=train_dataset)
+train_dataloader = dict(batch_size=2, dataset=train_dataset)
 val_dataloader = dict(
     batch_size=2,
     dataset=dict(

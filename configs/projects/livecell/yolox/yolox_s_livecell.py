@@ -38,9 +38,7 @@ train_dataset = dict(
         ann_file='livecell_coco_train_8class.json',
         data_prefix=dict(img='images/livecell_train_val_images/')))
 
-train_dataloader = dict(
-    batch_size=4,
-    dataset=train_dataset)
+train_dataloader = dict(batch_size=4, dataset=train_dataset)
 val_dataloader = dict(
     batch_size=4,
     dataset=dict(
@@ -60,8 +58,7 @@ test_evaluator = val_evaluator
 
 # training settings
 base_lr = 0.05
-optim_wrapper = dict(
-    optimizer=dict(lr=base_lr))
+optim_wrapper = dict(optimizer=dict(lr=base_lr))
 
 # learning rate
 max_epochs = 50

@@ -34,9 +34,7 @@ train_dataset = dict(
         ann_file='dtrain.json',
         data_prefix=dict(img='')))
 
-train_dataloader = dict(
-    batch_size=2,
-    dataset=train_dataset)
+train_dataloader = dict(batch_size=2, dataset=train_dataset)
 val_dataloader = dict(
     batch_size=2,
     dataset=dict(
@@ -56,8 +54,7 @@ test_evaluator = val_evaluator
 
 # optimizer
 base_lr = 0.001
-optim_wrapper = dict(
-    optimizer=dict(lr=base_lr))
+optim_wrapper = dict(optimizer=dict(lr=base_lr))
 
 # learning rate
 max_epochs = 70

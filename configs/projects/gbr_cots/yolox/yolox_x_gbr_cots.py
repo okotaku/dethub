@@ -143,8 +143,7 @@ test_cfg = dict(type='TestLoop')
 
 # optimizer
 base_lr = 0.005
-optim_wrapper = dict(
-    optimizer=dict(lr=base_lr))
+optim_wrapper = dict(optimizer=dict(lr=base_lr))
 
 # learning rate
 param_scheduler = [
