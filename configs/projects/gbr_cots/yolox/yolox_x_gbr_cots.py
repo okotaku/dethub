@@ -1,5 +1,6 @@
 _base_ = [
-    'mmdet::_base_/default_runtime.py', '../../../_base_/models/yolox_x.py'
+    'mmdet::_base_/default_runtime.py', '../../../_base_/models/yolox_x.py',
+    '../../../_base_/schedules/yolox_20e.py'
 ]
 custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 
@@ -142,12 +143,7 @@ test_cfg = dict(type='TestLoop')
 
 # optimizer
 base_lr = 0.005
-optim_wrapper = dict(
-    type='OptimWrapper',
-    optimizer=dict(
-        type='SGD', lr=base_lr, momentum=0.9, weight_decay=5e-4,
-        nesterov=True),
-    paramwise_cfg=dict(norm_decay_mult=0., bias_decay_mult=0.))
+optim_wrapper = dict(optimizer=dict(lr=base_lr))
 
 # learning rate
 param_scheduler = [
@@ -179,17 +175,18 @@ param_scheduler = [
     )
 ]
 
+# runtime settings
 default_hooks = dict(
     checkpoint=dict(
         save_best='auto',
-        interval=interval,
+        interval={{_base_.interval}},
         max_keep_ckpts=3  # only keep latest 3 checkpoints
     ),
     visualization=dict(draw=False, interval=1))
 custom_hooks = [
     dict(
         type='YOLOXModeSwitchHook',
-        num_last_epochs=num_last_epochs,
+        num_last_epochs={{_base_.num_last_epochs}},
         priority=48),
     dict(type='SyncNormHook', priority=48),
     dict(
