@@ -178,3 +178,4 @@ artifacts/
 wandb/
 data/
 dump/
+dethub/.mim/

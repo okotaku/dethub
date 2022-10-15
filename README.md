@@ -15,6 +15,7 @@ Documentation: [docs](docs)
 
 ## Supported Datasets
 
+- [x] [COCO](configs/projects/coco/)
 - [x] [TensorFlow - Help Protect the Great Barrier Reef (Kaggle)](configs/projects/gbr_cots/)
 - [x] [LIVECell dataset](configs/projects/livecell/)
 - [x] [Sartorius - Cell Instance Segmentation (Kaggle)](configs/projects/sartorius_cellseg/)
