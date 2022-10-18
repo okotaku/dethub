@@ -20,7 +20,8 @@ State-of-the-art object detection networks depend on region proposal algorithms 
 | mmdet ga_rpn_r50_fpn_1x_coco |  59.08  |  65.10  |  68.36  | [config](https://github.com/open-mmlab/mmdetection/blob/dev-3.x/configs/guided_anchoring/ga-rpn_r50-caffe_fpn_1x_coco.py) | - |
 | atss_rpn_r50_fpn_1x_coco |  60.81  |  63.46  |  64.41  | [config](atss_rpn_r50_fpn_1x_coco.py) | [model](<>) |
 | fcos_rpn_r50_fpn_1x_coco |  59.60  |  62.30  |  63.38  | [config](fcos_rpn_r50_fpn_1x_coco.py) | [model](<>) |
-| retinanet_rpn_r50_fpn_1x_coco |  55.44  |  58.59  |  59.83  | [config](retinanet_rpn_r50_fpn_1x_coco.py) | [model](<>) |
+| retinanet_rpn_r50_fpn_1x_coco |  55.98  |  59.08  |  60.33  | [config](retinanet_rpn_r50_fpn_1x_coco.py) | [model](<>) |
+| tood_rpn_r50_fpn_1x_coco |  62.94  |  65.70  |  66.43  | [config](tood_rpn_r50_fpn_1x_coco.py) | [model](<>) |
 
 ## Citation
 

@@ -10,7 +10,4 @@ train_dataloader = dict(batch_size=16)
 val_evaluator = dict(metric='proposal_fast')
 test_evaluator = val_evaluator
 
-optim_wrapper = dict(
-    optimizer=dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001))
-
 auto_scale_lr = dict(enable=True, base_batch_size=16)
