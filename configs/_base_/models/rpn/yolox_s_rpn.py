@@ -62,4 +62,4 @@ model = dict(
     train_cfg=dict(
         rpn=dict(assigner=dict(type='SimOTAAssigner', center_radius=2.5))),
     test_cfg=dict(
-        rpn=dict(score_thr=0.01, nms=dict(type='nms', iou_threshold=0.65))))
+        rpn=dict(score_thr=0.0, nms=dict(type='nms', iou_threshold=0.65))))

@@ -71,6 +71,6 @@ model = dict(
         rpn=dict(
             nms_pre=2000,
             max_per_img=1000,
-            score_thr=0.001,
+            score_thr=0.0,
             nms=dict(type='nms', iou_threshold=0.6),
             min_bbox_size=0)))
