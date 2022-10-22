@@ -7,6 +7,7 @@ dataset_type = 'CocoDataset'
 file_client_args = dict(backend='disk')
 
 albu_train_transforms = [
+    dict(type='RandomRotate90', p=0.5),
     dict(type='RandomShadow', p=0.5),
     dict(
         type='RandomBrightnessContrast',
@@ -26,7 +27,10 @@ train_pipeline = [
         img_scale=img_scale,
         ratio_range=(0.5, 1.5),
         pad_val=114.0),
-    dict(type='RandomFlip', prob=0.5),
+    dict(
+        type='RandomFlip',
+        prob=0.5,
+        direction=['horizontal', 'vertical', 'diagonal']),
     dict(type='DumpImage', max_imgs=100, dump_dir='dump'),
     # According to the official implementation, multi-scale
     # training is not considered here but in the
