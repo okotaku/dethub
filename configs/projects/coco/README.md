@@ -4,10 +4,10 @@
 
 ## Run demo
 
-todo: add demo
+todo: fix demo that is not rpn because of class name issue
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/coco/demo/000000000025.jpg configs/projects/coco/rpn/atss_rpn_r50_fpn_1x_coco.py XXX --out-file configs/projects/coco/demo/000000000025_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/coco/demo/000000000025.jpg configs/projects/coco/rpn/atss_rpn_r50_fpn_1x_coco.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocorpn/atss_rpn_r50_fpn_1x_coco-81af958b.pth --out-file configs/projects/coco/demo/000000000025_demo.jpg
 ```
 
 ![plot](demo/000000000025_demo.jpg)
