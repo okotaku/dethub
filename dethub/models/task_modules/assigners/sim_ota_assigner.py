@@ -11,10 +11,9 @@ from mmdet.registry import TASK_UTILS
 from mmdet.utils import ConfigType
 
 try:
-    import simota_cuda_ops
+    import ops
 except ModuleNotFoundError:
-    raise ModuleNotFoundError(
-        'Please compile SimOTA CUDA ops following README.')
+    raise ModuleNotFoundError('Please compile ops.')
 
 INF = 100000.0
 EPS = 1.0e-7
@@ -29,8 +28,8 @@ def get_in_gt_and_in_center_info(priors, gt_bboxes, center_radius):
             num_prior, num_gt, device=priors.device, dtype=torch.bool)
         is_in_cts = torch.empty(
             num_prior, num_gt, device=priors.device, dtype=torch.bool)
-        simota_cuda_ops.check_prior_in_gt(priors, gt_bboxes, is_in_gts,
-                                          is_in_cts, center_radius)
+        ops.check_prior_in_gt(priors, gt_bboxes, is_in_gts, is_in_cts,
+                              center_radius)
 
         is_in_gts_all = is_in_gts.any(dim=1)
         is_in_cts_all = is_in_cts.any(dim=1)
@@ -93,8 +92,8 @@ def get_cls_cost(valid_pred_scores, gt_labels):
             dtype=valid_pred_scores.dtype)
         gt_onehot_labels = F.one_hot(
             gt_labels.to(torch.int64), valid_pred_scores.shape[-1]).float()
-        simota_cuda_ops.binary_cross_entropy_cost(valid_pred_scores.sqrt_(),
-                                                  gt_onehot_labels, cls_cost)
+        ops.binary_cross_entropy_cost(valid_pred_scores.sqrt_(),
+                                      gt_onehot_labels, cls_cost)
     else:
         gt_onehot_label = (
             F.one_hot(gt_labels.to(torch.int64),

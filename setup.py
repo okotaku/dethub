@@ -177,13 +177,15 @@ if __name__ == '__main__':
         install_requires=parse_requirements('requirements/requirements.txt'),
         ext_modules=[
             CUDAExtension(
-                name='simota_cuda_ops',
+                name='ops',
                 sources=[
-                    'dethub/simota_cuda_ops/pybind.cpp',
-                    'dethub/simota_cuda_ops/check_prior_in_gt_kernel.cu',
-                    'dethub/simota_cuda_ops/check_prior_in_gt.cpp',
-                    'dethub/simota_cuda_ops/binary_cross_entropy_cost_kernel.cu',  # noqa
-                    'dethub/simota_cuda_ops/binary_cross_entropy_cost.cpp',
+                    'dethub/ops/pybind.cpp',
+                    'dethub/ops/check_prior_in_gt_kernel.cu',
+                    'dethub/ops/check_prior_in_gt.cpp',
+                    'dethub/ops/check_prior_in_gt_kernel_dsla.cu',
+                    'dethub/ops/check_prior_in_gt_dsla.cpp',
+                    'dethub/ops/binary_cross_entropy_cost_kernel.cu',  # noqa
+                    'dethub/ops/binary_cross_entropy_cost.cpp',
                 ],
                 extra_compile_args={'nvcc': ['-O3']})
         ],
