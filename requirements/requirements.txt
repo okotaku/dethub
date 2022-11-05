@@ -1,8 +1,8 @@
 albumentations
 imgaug
-mmcls==v1.0.0rc0
-mmdet==v3.0.0rc1
-mmengine==0.1.0
+mmcls==v1.0.0rc2
+mmdet==v3.0.0rc3
+mmengine==0.3.0
 timm
 ujson
 wandb
