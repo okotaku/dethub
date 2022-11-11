@@ -1,7 +1,7 @@
 _base_ = [
     '../../../_base_/models/rpn/yolox_s_rpn.py',
-    '../../../_base_/datasets/coco_detection_yolox_640.py',
-    '../../../_base_/schedules/yolox_300e.py',
+    '../../../_base_/datasets/coco/coco_detection_yolox_640.py',
+    '../../../_base_/schedules/yolox/yolox_300e.py',
     'mmdet::_base_/default_runtime.py'
 ]
 fp16 = dict(loss_scale=512.)

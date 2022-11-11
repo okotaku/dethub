@@ -1,7 +1,7 @@
 _base_ = [
     'mmdet::_base_/default_runtime.py', '../../../_base_/models/yolox_s.py',
-    '../../../_base_/datasets/coco_detection_yolox_ft_1536.py',
-    '../../../_base_/schedules/yolox_100e.py'
+    '../../../_base_/datasets/coco/coco_detection_yolox_ft_1536.py',
+    '../../../_base_/schedules/yolox/yolox_100e.py'
 ]
 custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 
