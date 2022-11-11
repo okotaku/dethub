@@ -21,6 +21,7 @@ Documentation: [docs](docs)
 - [x] [Sartorius - Cell Instance Segmentation (Kaggle)](configs/projects/sartorius_cellseg/)
 - [x] [Vehicle Detection in Multi-Resolution Images (Solafune)](configs/projects/solafune_cardet/)
 - [x] [LVIS](configs/projects/lvis/)
+- [x] [CrowdHuman](configs/projects/crowdhuman/)
 
 ## Get Started
 
