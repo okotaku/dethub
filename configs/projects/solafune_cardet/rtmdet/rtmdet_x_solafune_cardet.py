@@ -1,8 +1,8 @@
 _base_ = [
     'mmdet::_base_/default_runtime.py',
     '../../../_base_/models/rtmdet_x.py',
-    '../../../_base_/datasets/solafune_cardet_rtmdet_1280.py',
-    '../../../_base_/schedules/rtmdet_100e.py',
+    '../../../_base_/datasets/solafune_cardet/solafune_cardet_rtmdet_1280.py',  # noqa
+    '../../../_base_/schedules/rtmdet/rtmdet_100e.py',
 ]
 custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 fp16 = dict(loss_scale='dynamic')

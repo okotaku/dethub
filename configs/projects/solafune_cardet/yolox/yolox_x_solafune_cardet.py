@@ -1,7 +1,8 @@
 _base_ = [
-    'mmdet::_base_/default_runtime.py', '../../../_base_/models/yolox_x.py',
-    '../../../_base_/datasets/solafune_cardet_yolox_ft_1280.py',
-    '../../../_base_/schedules/yolox_50e.py'
+    'mmdet::_base_/default_runtime.py',
+    '../../../_base_/models/yolox_x.py',
+    '../../../_base_/datasets/solafune_cardet/solafune_cardet_yolox_ft_1280.py',  # noqa
+    '../../../_base_/schedules/yolox/yolox_50e.py'
 ]
 custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 fp16 = dict(loss_scale=512.)
