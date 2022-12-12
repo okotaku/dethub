@@ -7,16 +7,17 @@ dataset_type = 'CocoDataset'
 file_client_args = dict(backend='disk')
 
 train_pipeline = [
-    dict(type='Mosaic', img_scale=img_scale, pad_val=114.0),
+    dict(type='Mosaic', img_scale=img_scale, pad_val=[127.5, 127.5, 127.5]),
     dict(
         type='RandomAffine',
         scaling_ratio_range=(0.1, 2),
-        border=(-img_scale[0] // 2, -img_scale[1] // 2)),
+        border=(-img_scale[0] // 2, -img_scale[1] // 2),
+        border_val=(127.5, 127.5, 127.5)),
     dict(
         type='MixUp',
         img_scale=img_scale,
         ratio_range=(0.8, 1.6),
-        pad_val=114.0),
+        pad_val=[127.5, 127.5, 127.5]),
     dict(type='YOLOXHSVRandomAug'),
     dict(type='RandomFlip', prob=0.5),
     # According to the official implementation, multi-scale
@@ -30,7 +31,7 @@ train_pipeline = [
         pad_to_square=True,
         # If the image is three-channel, the pad value needs
         # to be set separately for each channel.
-        pad_val=dict(img=(114.0, 114.0, 114.0))),
+        pad_val=dict(img=(127.5, 127.5, 127.5))),
     dict(type='FilterAnnotations', min_gt_bbox_wh=(1, 1), keep_empty=False),
     dict(type='PackDetInputs')
 ]
@@ -56,7 +57,7 @@ test_pipeline = [
     dict(
         type='Pad',
         pad_to_square=True,
-        pad_val=dict(img=(114.0, 114.0, 114.0))),
+        pad_val=dict(img=(127.5, 127.5, 127.5))),
     dict(type='LoadAnnotations', with_bbox=True),
     dict(
         type='PackDetInputs',
@@ -66,13 +67,13 @@ test_pipeline = [
 
 train_dataloader = dict(
     batch_size=8,
-    num_workers=8,
+    num_workers=4,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     dataset=train_dataset)
 val_dataloader = dict(
     batch_size=8,
-    num_workers=4,
+    num_workers=8,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
