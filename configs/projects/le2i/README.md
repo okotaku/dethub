@@ -18,7 +18,7 @@ $ docker compose exec dethub python tools/image_demo.py configs/projects/le2i/de
 
 ## Prepare datasets
 
-1. Download data from from [roboflow](https://universe.roboflow.com/new-workspace-qfcus/le2i)
+1. Download data from [roboflow](https://universe.roboflow.com/new-workspace-qfcus/le2i)
 
 2. Unzip the files as follows
 
