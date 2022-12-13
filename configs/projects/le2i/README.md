@@ -11,7 +11,7 @@
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/le2i/demo/001203_jpg.rf.f96d1c443c896ba5a923134797eb3260.jpg configs/projects/le2i/yolox/yolox_s_le2i.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1crowdhuman/yolox_s_crowdhuman-fd5a218a.pth --out-file configs/projects/le2i/demo/001203_jpg.rf.f96d1c443c896ba5a923134797eb3260_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/le2i/demo/001203_jpg.rf.f96d1c443c896ba5a923134797eb3260.jpg configs/projects/le2i/yolox/yolox_s_le2i.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1le2i/yolox_s_le2i-290f0ebf.pth --out-file configs/projects/le2i/demo/001203_jpg.rf.f96d1c443c896ba5a923134797eb3260_demo.jpg
 ```
 
 ![plot](demo/001203_jpg.rf.f96d1c443c896ba5a923134797eb3260_demo.jpg)
@@ -47,7 +47,7 @@ Run train
 
 ```
 # preprocess
-$ docker compose exec dethub python tools/dataset_converters/prepare_le2i.py
+$ docker compose exec dethub python tools/dataset_converters/prepare_roboflow.py le2i
 
 # single gpu
 $ docker compose exec dethub mim train mmdet configs/projects/le2i/yolox/yolox_s_le2i.py

@@ -7,12 +7,15 @@ custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 fp16 = dict(loss_scale=512.)
 
 # model settings
-num_classes = 1
+num_classes = 5
 model = dict(bbox_head=dict(num_classes=num_classes))
 
 # dataset settings
-data_root = 'data/le2i/'
-metainfo = dict(CLASSES=['fall'], PALETTE=[(220, 20, 60)])
+data_root = 'data/findfallenpeople/'
+metainfo = dict(
+    CLASSES=['Chair', 'Couch', 'Fallen', 'LyingPerson', 'NormalPeople'],
+    PALETTE=[(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230),
+             (106, 0, 228)])
 
 train_dataset = dict(
     dataset=dict(
@@ -21,7 +24,7 @@ train_dataset = dict(
         ann_file='train/_annotations.coco.json',
         data_prefix=dict(img='train/')))
 
-train_dataloader = dict(batch_size=4, dataset=train_dataset)
+train_dataloader = dict(batch_size=32, dataset=train_dataset)
 val_dataloader = dict(
     batch_size=4,
     dataset=dict(
