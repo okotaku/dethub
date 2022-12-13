@@ -23,6 +23,8 @@ Documentation: [docs](docs)
 - [x] [LVIS](configs/projects/lvis/)
 - [x] [CrowdHuman](configs/projects/crowdhuman/)
 - [x] [Le2i Computer Vision Project](configs/projects/le2i/)
+- [x] [FindFallenPeople Computer Vision Project](configs/projects/findfallenpeople/)
+- [x] [Smoke100 Computer Vision Project](configs/projects/smoke100/)
 
 ## Get Started
 
