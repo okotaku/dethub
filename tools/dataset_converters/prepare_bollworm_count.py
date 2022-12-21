@@ -1,6 +1,5 @@
 import cv2
 import mmengine
-import numpy as np
 import pandas as pd
 from shapely.wkt import loads
 from sklearn.model_selection import KFold
@@ -27,7 +26,6 @@ def df2coco(imgs, bboxes):
     img_id = 0
     ann_id = 0
     for img_path in tqdm(imgs):
-        #print(f'data/bollworm_count/images/{img_path}')
         img = cv2.imread(f'data/bollworm_count/images/{img_path}')
         img_info = dict(
             id=img_id,
@@ -39,19 +37,16 @@ def df2coco(imgs, bboxes):
         if img_path == 'id_7ea2112ddf0ffffe7e8ee272.jpg':
             print(img_path)
         if len(bboxes_) != 0:
-            for geometry, category in zip(bboxes_.geometry.values, bboxes_.worm_type.values):
+            for geometry, category in zip(bboxes_.geometry.values,
+                                          bboxes_.worm_type.values):
                 bbox = loads(geometry).bounds
 
                 x_min, y_min, x_max, y_max = bbox
                 if x_max > img.shape[1]:
                     continue
-                    #print("fix x", img_path, x_max, x_min, y_max, y_min, img.shape)
-                    #x_max = img.shape[1]
 
                 if y_max > img.shape[0]:
                     continue
-                    #print("fix y", img_path, x_max, x_min, y_max, y_min, img.shape)
-                    #y_max = img.shape[0]
                 if x_max < x_min or y_max < y_min:
                     continue
                 if x_min < 0 or y_min < 0:
@@ -74,7 +69,6 @@ def df2coco(imgs, bboxes):
         img_id += 1
 
     print(ann_id, len(bboxes))
-    #assert ann_id == len(bboxes)
     coco = init_coco()
     coco['images'] = img_infos
     coco['annotations'] = ann_infos
@@ -94,13 +88,14 @@ def main():
     for fold, (train_inds, val_inds) in enumerate(splits):
         train_imgs = img_ids[train_inds]
         train_bboxes = bboxes[bboxes.image_id.isin(train_imgs)]
-        train_coco = df2coco(train_imgs,train_bboxes)
-        #mmengine.dump(train_coco, f'data/bollworm_count/dtrain_fold{fold}.json')
+        train_coco = df2coco(train_imgs, train_bboxes)
+        mmengine.dump(train_coco,
+                      f'data/bollworm_count/dtrain_fold{fold}.json')
 
         val_imgs = img_ids[val_inds]
         val_bboxes = bboxes[bboxes.image_id.isin(val_imgs)]
         val_coco = df2coco(val_imgs, val_bboxes)
-        #mmengine.dump(val_coco, f'data/bollworm_count/dval_fold{fold}.json')
+        mmengine.dump(val_coco, f'data/bollworm_count/dval_fold{fold}.json')
         break
 
 

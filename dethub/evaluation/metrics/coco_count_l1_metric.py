@@ -10,7 +10,9 @@ from mmdet.structures.mask import encode_mask_results
 
 @METRICS.register_module()
 class CocoCountBboxL1Metric(CocoMetric):
-    def __init__(self, *args,
+
+    def __init__(self,
+                 *args,
                  count_thresholds=np.linspace(0.01, 0.99, num=99),
                  skip_map=False,
                  **kwargs):
@@ -19,7 +21,9 @@ class CocoCountBboxL1Metric(CocoMetric):
         self.skip_map = skip_map
 
     def process(self, data_batch: dict, data_samples: Sequence[dict]) -> None:
-        """Process one batch of data samples and predictions. The processed
+        """Process one batch of data samples and predictions.
+
+        The processed
         results should be stored in ``self.results``, which will be used to
         compute the metrics when all batches have been processed.
         Args:
@@ -57,9 +61,9 @@ class CocoCountBboxL1Metric(CocoMetric):
             # add converted result to the results list
             self.results.append((gt, result))
 
-    def eval_l1(self,
-                         results: List[dict]) -> np.ndarray:
+    def eval_l1(self, results: List[dict]) -> np.ndarray:
         """Evaluate proposal recall with COCO's fast_eval_recall.
+
         Args:
             results (List[dict]): Results of the dataset.
             proposal_nums (Sequence[int]): Proposal numbers used for
@@ -71,11 +75,15 @@ class CocoCountBboxL1Metric(CocoMetric):
             np.ndarray: Averaged recall results.
         """
         gt_counts = [[] for _ in self.cat_ids]
-        pred_counts = {thr:[[] for _ in self.cat_ids] for thr in self.count_thresholds}
+        pred_counts = {
+            thr: [[] for _ in self.cat_ids]
+            for thr in self.count_thresholds
+        }
         for i in range(len(self.img_ids)):
             ann_ids = self._coco_api.get_ann_ids(img_ids=self.img_ids[i])
             ann_info = self._coco_api.load_anns(ann_ids)
-            ann_category_id = np.array([ann['category_id'] for ann in ann_info])
+            ann_category_id = np.array(
+                [ann['category_id'] for ann in ann_info])
             pred_labels = np.array(results[i]['labels'])
             pred_scores = np.array(results[i]['scores'])
             for c in self.cat_ids:

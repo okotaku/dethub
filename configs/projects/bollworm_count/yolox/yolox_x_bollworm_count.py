@@ -1,5 +1,6 @@
 _base_ = [
-    'mmdet::_base_/default_runtime.py', '../../../_base_/models/yolox_x.py',
+    'mmdet::_base_/default_runtime.py',
+    '../../../_base_/models/yolox_x.py',
     '../../../_base_/datasets/bollworm_count/bollworm_count_detection_yolox_ft_1280_keepempty.py',  # noqa
     '../../../_base_/schedules/yolox_50e.py'
 ]
@@ -24,11 +25,7 @@ model = dict(
 
 # dataset settings
 data_root = 'data/bollworm_count/'
-metainfo = dict(
-    CLASSES=[
-        'pbw', 'abw'
-    ],
-    PALETTE=[(220, 20, 60), (119, 11, 32)])
+metainfo = dict(CLASSES=['pbw', 'abw'], PALETTE=[(220, 20, 60), (119, 11, 32)])
 
 train_dataset = dict(
     dataset=dict(
@@ -49,8 +46,7 @@ val_dataloader = dict(
 test_dataloader = val_dataloader
 
 val_evaluator = dict(
-    type='CocoCountBboxL1Metric',
-    ann_file=data_root + 'dval_fold0.json')
+    type='CocoCountBboxL1Metric', ann_file=data_root + 'dval_fold0.json')
 test_evaluator = val_evaluator
 
 # training settings
