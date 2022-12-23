@@ -1,0 +1,15 @@
+
+Import:
+  - configs/projects/coco/yolox/metafile.yml
+  - configs/projects/coco/rpn/metafile.yml
+  - configs/projects/coco1class/yolox/metafile.yml
+  - configs/projects/crowdhuman/yolox/metafile.yml
+  - configs/projects/findfallenpeople/yolox/metafile.yml
+  - configs/projects/gbr_cots/yolox/metafile.yml
+  - configs/projects/le2i/yolox/metafile.yml
+  - configs/projects/livecell/yolox/metafile.yml
+  - configs/projects/lvis/yolox/metafile.yml
+  - configs/projects/sartorius_cellseg/yolox/metafile.yml
+  - configs/projects/smoke100/yolox/metafile.yml
+  - configs/projects/solafune_cardet/rtmdet/metafile.yml
+  - configs/projects/solafune_cardet/yolox/metafile.yml

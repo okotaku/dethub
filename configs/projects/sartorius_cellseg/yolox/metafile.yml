@@ -1,0 +1,31 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_sartorius_cellseg_cocopretrain
+    In Collection: YOLOX
+    Config: configs/projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg_cocopretrain.py
+    Results:
+      - Task: Object Detection
+        Dataset: sartorius_cellseg
+        Metrics:
+          box AP: 35.7
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_sartorius_cellseg_cocopretrain-58d3885a.pth
+  - Name: yolox_s_sartorius_cellseg
+    In Collection: YOLOX
+    Config: configs/projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg.py
+    Results:
+      - Task: Object Detection
+        Dataset: sartorius_cellseg
+        Metrics:
+          box AP: 36.7
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_sartorius_cellseg-3d3d487f.pth
+  - Name: yolox_x_sartorius_cellseg
+    In Collection: YOLOX
+    Config: configs/projects/sartorius_cellseg/yolox/yolox_x_sartorius_cellseg.py
+    Results:
+      - Task: Object Detection
+        Dataset: sartorius_cellseg
+        Metrics:
+          box AP: 38.0
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_x_sartorius_cellseg-9776898b.pth

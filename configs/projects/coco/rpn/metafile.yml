@@ -1,0 +1,59 @@
+Collections:
+  - Name: RPN
+
+Models:
+  - Name: atss_rpn_r50_fpn_1x_coco
+    In Collection: RPN
+    Config: configs/projects/coco/rpn/atss_rpn_r50_fpn_1x_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          AR@100: 60.81
+          AR@300: 63.46
+          AR@1000: 64.41
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocorpn/atss_rpn_r50_fpn_1x_coco-81af958b.pth
+  - Name: fcos_rpn_r50_fpn_1x_coco
+    In Collection: RPN
+    Config: configs/projects/coco/rpn/fcos_rpn_r50_fpn_1x_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          AR@100: 59.60
+          AR@300: 62.30
+          AR@1000: 63.38
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocorpn/fcos_rpn_r50_fpn_1x_coco-b44310f1.pth
+  - Name: retinanet_rpn_r50_fpn_1x_coco
+    In Collection: RPN
+    Config: configs/projects/coco/rpn/retinanet_rpn_r50_fpn_1x_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          AR@100: 55.98
+          AR@300: 59.08
+          AR@1000: 60.33
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocorpn/retinanet_rpn_r50_fpn_1x_coco-b459621a.pth
+  - Name: tood_rpn_r50_fpn_1x_coco
+    In Collection: RPN
+    Config: configs/projects/coco/rpn/tood_rpn_r50_fpn_1x_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          AR@100: 62.94
+          AR@300: 65.70
+          AR@1000: 66.43
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocorpn/tood_rpn_r50_fpn_1x_coco-69402644.pth
+  - Name: yolox_s_rpn_300e_coco
+    In Collection: RPN
+    Config: configs/projects/coco/rpn/yolox_s_rpn_300e_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          AR@100: 60.08
+          AR@300: 62.16
+          AR@1000: 63.14
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocorpn/yolox_s_rpn_300e_coco-e6d942f1.pth

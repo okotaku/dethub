@@ -1,0 +1,13 @@
+Collections:
+  - Name: RTMDet
+
+Models:
+  - Name: rtmdet_s_solafune_cardet
+    In Collection: RTMDet
+    Config: configs/projects/solafune_cardet/rtmdet/rtmdet_s_solafune_cardet.py
+    Results:
+      - Task: Object Detection
+        Dataset: solafune_cardet
+        Metrics:
+          box AP: 54.0
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1solafune-cardet/rtmdet_s_solafune_cardet-c64fffc7.pth
