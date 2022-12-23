@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_crowdhuman
+    In Collection: YOLOX
+    Config: configs/projects/crowdhuman/yolox/yolox_s_crowdhuman.py
+    Results:
+      - Task: Object Detection
+        Dataset: crowdhuman
+        Metrics:
+          box AP: 93.6
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1crowdhuman/yolox_s_crowdhuman-fd5a218a.pth

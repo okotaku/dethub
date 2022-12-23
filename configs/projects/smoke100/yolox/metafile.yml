@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_smoke100
+    In Collection: YOLOX
+    Config: configs/projects/smoke100/yolox/yolox_s_smoke100.py
+    Results:
+      - Task: Object Detection
+        Dataset: smoke100
+        Metrics:
+          box AP: 90.0
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1smoke100/yolox_s_smoke100-670611b4.pth

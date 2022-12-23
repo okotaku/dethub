@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_lvis
+    In Collection: YOLOX
+    Config: configs/projects/lvis/yolox/yolox_s_lvis.py
+    Results:
+      - Task: Object Detection
+        Dataset: lvis
+        Metrics:
+          box AP: 7.8
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1lvis/yolox_s_lvis-7784e9fa.pth

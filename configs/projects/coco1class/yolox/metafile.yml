@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_coco1class
+    In Collection: YOLOX
+    Config: configs/projects/coco1class/yolox/yolox_s_coco1class.py
+    Results:
+      - Task: Object Detection
+        Dataset: coco1class
+        Metrics:
+          box AP: 39.9
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1coco1class/yolox_s_coco1class-596787a8.pth
