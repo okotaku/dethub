@@ -7,38 +7,58 @@ from mmengine.structures import InstanceData
 from mmdet.models.task_modules.assigners import \
     DynamicSoftLabelAssigner as Base
 from mmdet.models.task_modules.assigners.assign_result import AssignResult
+from mmdet.models.task_modules.assigners.dynamic_soft_label_assigner import (
+    EPS, INF, center_of_mass)
 from mmdet.registry import TASK_UTILS
+from mmdet.structures.bbox import BaseBoxes
+from mmdet.utils import ConfigType
 
 try:
     import ops
 except ModuleNotFoundError:
     raise ModuleNotFoundError('Please compile ops.')
 
-INF = 100000000
-EPS = 1.0e-7
-
 
 def get_in_gt_and_in_center_info(priors, gt_bboxes):
     """Use CUDA extension to avoid unnecessary memory allocation."""
-    if priors.is_cuda:
+
+    prior_center = priors[:, :2]
+    if isinstance(gt_bboxes, BaseBoxes):
+        is_in_gts = gt_bboxes.find_inside_points(prior_center)
+    elif priors.is_cuda:
         num_prior = priors.size(0)
         num_gt = gt_bboxes.size(0)
         is_in_gts = torch.empty(
             num_prior, num_gt, device=priors.device, dtype=torch.bool)
         ops.check_prior_in_gt_dsla(priors, gt_bboxes, is_in_gts)
     else:
-        prior_center = priors[:, :2]
         lt_ = prior_center[:, None] - gt_bboxes[:, :2]
         rb_ = gt_bboxes[:, 2:] - prior_center[:, None]
 
         deltas = torch.cat([lt_, rb_], dim=-1)
         is_in_gts = deltas.min(dim=-1).values > 0
+
     valid_mask = is_in_gts.sum(dim=1) > 0
-    return valid_mask, is_in_gts
+    return valid_mask
 
 
 @TASK_UTILS.register_module(force=True)
 class DynamicSoftLabelAssigner(Base):
+
+    def __init__(
+        self,
+        soft_center_radius: float = 3.0,
+        topk: int = 13,
+        iou_weight: float = 3.0,
+        # RTMDet not work with cudaext_bbox_overlaps.
+        # I don't know the reason.
+        iou_calculator: ConfigType = dict(
+            type='BboxOverlaps2D', force_torch=True)
+    ) -> None:
+        self.soft_center_radius = soft_center_radius
+        self.topk = topk
+        self.iou_weight = iou_weight
+        self.iou_calculator = TASK_UTILS.build(iou_calculator)
 
     def assign(self,
                pred_instances: InstanceData,
@@ -79,13 +99,7 @@ class DynamicSoftLabelAssigner(Base):
                                                    0,
                                                    dtype=torch.long)
 
-        valid_mask, is_in_gts = get_in_gt_and_in_center_info(priors, gt_bboxes)
-
-        valid_decoded_bbox = decoded_bboxes[valid_mask]
-        valid_pred_scores = pred_scores[valid_mask]
-        num_valid = valid_decoded_bbox.size(0)
-
-        if num_gt == 0 or num_bboxes == 0 or num_valid == 0:
+        if num_gt == 0 or num_bboxes == 0:
             # No ground truth or boxes, return empty assignment
             max_overlaps = decoded_bboxes.new_zeros((num_bboxes, ))
             if num_gt == 0:
@@ -96,7 +110,29 @@ class DynamicSoftLabelAssigner(Base):
                                                       dtype=torch.long)
             return AssignResult(
                 num_gt, assigned_gt_inds, max_overlaps, labels=assigned_labels)
-        gt_center = (gt_bboxes[:, :2] + gt_bboxes[:, 2:]) / 2.0
+
+        valid_mask = get_in_gt_and_in_center_info(priors, gt_bboxes)
+
+        valid_decoded_bbox = decoded_bboxes[valid_mask]
+        valid_pred_scores = pred_scores[valid_mask]
+        num_valid = valid_decoded_bbox.size(0)
+
+        if num_valid == 0:
+            # No ground truth or boxes, return empty assignment
+            max_overlaps = decoded_bboxes.new_zeros((num_bboxes, ))
+            assigned_labels = decoded_bboxes.new_full((num_bboxes, ),
+                                                      -1,
+                                                      dtype=torch.long)
+            return AssignResult(
+                num_gt, assigned_gt_inds, max_overlaps, labels=assigned_labels)
+
+        if hasattr(gt_instances, 'masks'):
+            gt_center = center_of_mass(gt_instances.masks, eps=EPS)
+        elif isinstance(gt_bboxes, BaseBoxes):
+            gt_center = gt_bboxes.centers
+        else:
+            # Tensor boxes will be treated as horizontal boxes by defaults
+            gt_center = (gt_bboxes[:, :2] + gt_bboxes[:, 2:]) / 2.0
         valid_prior = priors[valid_mask]
         strides = valid_prior[:, 2]
         distance = (valid_prior[:, None, :2] - gt_center[None, :, :]
