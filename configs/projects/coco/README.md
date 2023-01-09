@@ -4,8 +4,6 @@
 
 ## Run demo
 
-todo: fix demo that is not rpn because of class name issue
-
 ```
 $ docker compose exec dethub python tools/image_demo.py configs/projects/coco/demo/000000000025.jpg configs/projects/coco/yolox/yolox_s_swin_s_coco.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyolox/yolox_s_swin_s-19d4228f.pth --out-file configs/projects/coco/demo/000000000025_demo.jpg
 ```
