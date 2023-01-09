@@ -93,11 +93,11 @@ class TestSingleStageDetector(TestCase):
         if 'backbone' in model:
             model.backbone.init_cfg = None
 
-        from mmdet.models import build_detector
+        from mmdet.registry import MODELS
         assert all([device in ['cpu', 'cuda'] for device in devices])
 
         for device in devices:
-            detector = build_detector(model)
+            detector = MODELS.build(model)
 
             if device == 'cuda':
                 if not torch.cuda.is_available():
