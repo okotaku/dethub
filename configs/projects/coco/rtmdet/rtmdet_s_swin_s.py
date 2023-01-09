@@ -2,7 +2,7 @@ _base_ = [
     'mmdet::_base_/default_runtime.py',
     '../../../_base_/models/rtmdet/rtmdet_s_swin_s.py',
     '../../../_base_/datasets/coco/coco_detection_rtmdet_s_640_imagenet.py',
-    '../../../_base_/schedules/rtmdet/rtmdet_100e.py'
+    '../../../_base_/schedules/rtmdet/rtmdet_100e_5e4.py'
 ]
 custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 fp16 = dict(loss_scale=512.)
