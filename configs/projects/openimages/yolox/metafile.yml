@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_openimages
+    In Collection: YOLOX
+    Config: configs/projects/openimages/yolox/yolox_s_openimages.py
+    Results:
+      - Task: Object Detection
+        Dataset: Open Images v6
+        Metrics:
+          box AP: 26.7
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1openimages_yolox/yolox_s_openimages-46accb21.pth
