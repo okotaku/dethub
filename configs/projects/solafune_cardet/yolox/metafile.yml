@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_x_solafune_cardet
+    In Collection: YOLOX
+    Config: configs/projects/solafune_cardet/yolox/yolox_x_solafune_cardet.py
+    Results:
+      - Task: Object Detection
+        Dataset: solafune_cardet
+        Metrics:
+          box AP: 55.1
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1solafune-cardet/yolox_x_solafune_cardet-97ba0444.pth

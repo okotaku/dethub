@@ -47,7 +47,7 @@ jobs:
           pip install -r requirements/requirements.txt
           pip install -r requirements/tests.txt
           pip uninstall -y opencv-python && pip install opencv-python==4.5.1.48 && \
-          MMCV_WITH_OPS=1 pip install mmcv==2.0.0rc1 && \
+          MMCV_WITH_OPS=1 pip install mmcv==2.0.0rc2 && \
           pip install 'git+https://github.com/facebookresearch/detectron2.git'
           python -c "import mmcv"
       - name: Build and install

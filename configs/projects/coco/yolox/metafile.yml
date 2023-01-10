@@ -1,0 +1,58 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_convnext_s_coco
+    In Collection: YOLOX
+    Config: configs/projects/coco/yolox/yolox_s_convnext_s_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 49.1
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyolox/yolox_s_convnext_s-5a406004.pth
+  - Name: yolox_s_davit_s_coco
+    In Collection: YOLOX
+    Config: configs/projects/coco/yolox/yolox_s_davit_s_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 47.4
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyolox/yolox_s_davit_s-c40f7b05.pth
+  - Name: yolox_s_hornet_s_gf_coco
+    In Collection: YOLOX
+    Config: configs/projects/coco/yolox/yolox_s_hornet_s_gf_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 50.7
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyolox/yolox_s_hornet_s_gf-2ecf8a13.pth
+  - Name: yolox_s_swin_s_coco
+    In Collection: YOLOX
+    Config: configs/projects/coco/yolox/yolox_s_swin_s_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 48.6
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyolox/yolox_s_swin_s-19d4228f.pth
+  - Name: yolox_s_swinv2_s_coco
+    In Collection: YOLOX
+    Config: configs/projects/coco/yolox/yolox_s_swinv2_s_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 49.5
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyolox/yolox_s_swinv2_s-61f8b085.pth
+  - Name: yolox_s_van_s_coco
+    In Collection: YOLOX
+    Config: configs/projects/coco/yolox/yolox_s_van_s_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 47.6
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyolox/yolox_s_van_s-248de52f.pth

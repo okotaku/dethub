@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_le2i
+    In Collection: YOLOX
+    Config: configs/projects/le2i/yolox/yolox_s_le2i.py
+    Results:
+      - Task: Object Detection
+        Dataset: le2i
+        Metrics:
+          box AP: 62.1
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1le2i/yolox_s_le2i-290f0ebf.pth

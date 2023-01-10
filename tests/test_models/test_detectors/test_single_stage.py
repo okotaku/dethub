@@ -25,8 +25,8 @@ class TestSingleStageDetector(TestCase):
         if 'backbone' in model:
             model.backbone.init_cfg = None
 
-        from mmdet.models import build_detector
-        detector = build_detector(model)
+        from mmdet.registry import MODELS
+        detector = MODELS.build(model)
         self.assertTrue(detector.backbone)
         self.assertTrue(detector.neck)
         self.assertTrue(detector.bbox_head)
@@ -42,11 +42,11 @@ class TestSingleStageDetector(TestCase):
         if 'backbone' in model:
             model.backbone.init_cfg = None
 
-        from mmdet.models import build_detector
+        from mmdet.registry import MODELS
         assert all([device in ['cpu', 'cuda'] for device in devices])
 
         for device in devices:
-            detector = build_detector(model)
+            detector = MODELS.build(model)
             detector.init_weights()
 
             if device == 'cuda':
@@ -66,11 +66,11 @@ class TestSingleStageDetector(TestCase):
         if 'backbone' in model:
             model.backbone.init_cfg = None
 
-        from mmdet.models import build_detector
+        from mmdet.registry import MODELS
         assert all([device in ['cpu', 'cuda'] for device in devices])
 
         for device in devices:
-            detector = build_detector(model)
+            detector = MODELS.build(model)
 
             if device == 'cuda':
                 if not torch.cuda.is_available():
@@ -93,11 +93,11 @@ class TestSingleStageDetector(TestCase):
         if 'backbone' in model:
             model.backbone.init_cfg = None
 
-        from mmdet.models import build_detector
+        from mmdet.registry import MODELS
         assert all([device in ['cpu', 'cuda'] for device in devices])
 
         for device in devices:
-            detector = build_detector(model)
+            detector = MODELS.build(model)
 
             if device == 'cuda':
                 if not torch.cuda.is_available():

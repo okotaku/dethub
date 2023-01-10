@@ -1,0 +1,22 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_gbr_cots
+    In Collection: YOLOX
+    Config: configs/projects/gbr_cots/yolox/yolox_s_gbr_cots.py
+    Results:
+      - Task: Object Detection
+        Dataset: gbr_cots
+        Metrics:
+          box AP: 40.3
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_gbr_cots-cefaa435.pth
+  - Name: yolox_x_gbr_cots
+    In Collection: YOLOX
+    Config: configs/projects/gbr_cots/yolox/yolox_x_gbr_cots.py
+    Results:
+      - Task: Object Detection
+        Dataset: gbr_cots
+        Metrics:
+          box AP: 44.1
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_x_gbr_cots-b8614c53.pth
