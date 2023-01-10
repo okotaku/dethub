@@ -1,0 +1,25 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_bollworm_count
+    In Collection: YOLOX
+    Config: configs/projects/bollworm_count/yolox/yolox_s_bollworm_count.py
+    Results:
+      - Task: Object Detection
+        Dataset: bollworm_count
+        Metrics:
+          box AP: 55.0
+          Count L1: 1.9176
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1bollworm_count/yolox_s_bollworm_count-ccfc96be.pth
+
+  - Name: yolox_x_bollworm_count
+    In Collection: YOLOX
+    Config: configs/projects/bollworm_count/yolox/yolox_x_bollworm_count.py
+    Results:
+      - Task: Object Detection
+        Dataset: bollworm_count
+        Metrics:
+          box AP: 58.5
+          Count L1: 1.6735
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1bollworm_count/yolox_x_bollworm_count-001f9ca3.pth
