@@ -1,5 +1,6 @@
 
 Import:
+  - configs/projects/coco/rtmdet/metafile.yml
   - configs/projects/coco/yolox/metafile.yml
   - configs/projects/coco/rpn/metafile.yml
   - configs/projects/coco1class/yolox/metafile.yml

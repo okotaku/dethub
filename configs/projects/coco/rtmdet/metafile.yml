@@ -1,0 +1,13 @@
+Collections:
+  - Name: RTMDet
+
+Models:
+  - Name: rtmdet_s_swin_s
+    In Collection: RTMDet
+    Config: configs/projects/coco/rtmdet/rtmdet_s_swin_s.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 49.1
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocortmdet/rtmdet_s_swin_s-556e1923.pth
