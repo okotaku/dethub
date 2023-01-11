@@ -22,7 +22,6 @@ def df2coco(imgs):
     img_infos = []
     img_id = 0
     for img_path in tqdm(imgs):
-        #print(f'data/bollworm_count/images/{img_path}')
         img = cv2.imread(f'data/bollworm_count/images/{img_path}')
         img_info = dict(
             id=img_id,
@@ -43,7 +42,7 @@ def main():
     img_ids = df.image_id_worm.unique()
 
     train_coco = df2coco(img_ids)
-    mmengine.dump(train_coco, f'data/bollworm_count/dtest.json')
+    mmengine.dump(train_coco, 'data/bollworm_count/dtest.json')
 
 
 if __name__ == '__main__':
