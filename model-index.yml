@@ -1,5 +1,6 @@
 
 Import:
+  - configs/projects/bollworm_count/yolox/metafile.yml
   - configs/projects/coco/rtmdet/metafile.yml
   - configs/projects/coco/yolox/metafile.yml
   - configs/projects/coco/rpn/metafile.yml
@@ -10,6 +11,7 @@ Import:
   - configs/projects/le2i/yolox/metafile.yml
   - configs/projects/livecell/yolox/metafile.yml
   - configs/projects/lvis/yolox/metafile.yml
+  - configs/projects/openimages/yolox/metafile.yml
   - configs/projects/sartorius_cellseg/yolox/metafile.yml
   - configs/projects/smoke100/yolox/metafile.yml
   - configs/projects/solafune_cardet/rtmdet/metafile.yml
