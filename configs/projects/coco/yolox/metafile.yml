@@ -38,6 +38,24 @@ Models:
         Metrics:
           box AP: 48.6
     Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyolox/yolox_s_swin_s-19d4228f.pth
+  - Name: yolox_s_swin_s_21k_1k_coco
+    In Collection: YOLOX
+    Config: configs/projects/coco/yolox/yolox_s_swin_s_21k_1k_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 48.5
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyoloxswin/yolox_s_swin_s_21k_1k_coco-ab6939d5.pth
+  - Name: yolox_s_swin_s_21k_coco
+    In Collection: YOLOX
+    Config: configs/projects/coco/yolox/yolox_s_swin_s_21k_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 48.5
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocoyoloxswin/yolox_s_swin_s_21k_coco-2146be33.pth
   - Name: yolox_s_swinv2_s_coco
     In Collection: YOLOX
     Config: configs/projects/coco/yolox/yolox_s_swinv2_s_coco.py
