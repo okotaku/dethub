@@ -12,7 +12,7 @@ model = dict(bbox_head=dict(num_classes=num_classes))
 
 # dataset settings
 data_root = 'data/le2i/'
-metainfo = dict(CLASSES=['fall'], PALETTE=[(220, 20, 60)])
+metainfo = dict(classes=['fall'], palette=[(220, 20, 60)])
 
 train_dataset = dict(
     dataset=dict(

@@ -53,7 +53,7 @@ train_dataset = dict(
                     file_client_args=file_client_args),
                 dict(type='LoadAnnotations', with_bbox=True)
             ],
-            filter_cfg=dict(filter_empty_gt=True, min_size=32),
+            filter_cfg=dict(filter_empty_gt=False, min_size=32),
         )),
     pipeline=train_pipeline)
 

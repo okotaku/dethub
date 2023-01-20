@@ -25,7 +25,7 @@ model = dict(
 
 # dataset settings
 data_root = 'data/bollworm_count/'
-metainfo = dict(CLASSES=['pbw', 'abw'], PALETTE=[(220, 20, 60), (119, 11, 32)])
+metainfo = dict(classes=['pbw', 'abw'], palette=[(220, 20, 60), (119, 11, 32)])
 
 train_dataset = dict(
     dataset=dict(
