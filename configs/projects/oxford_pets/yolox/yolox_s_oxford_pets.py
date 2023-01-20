@@ -7,12 +7,36 @@ custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
 fp16 = dict(loss_scale=512.)
 
 # model settings
-num_classes = 1
+num_classes = 37
 model = dict(bbox_head=dict(num_classes=num_classes))
 
 # dataset settings
-data_root = 'data/smoke100/'
-metainfo = dict(classes=['smoke'], palette=[(220, 20, 60)])
+data_root = 'data/oxford-pets/'
+metainfo = dict(
+    classes=[
+        'cat-Abyssinian', 'cat-Bengal', 'cat-Birman', 'cat-Bombay',
+        'cat-British_Shorthair', 'cat-Egyptian_Mau', 'cat-Maine_Coon',
+        'cat-Persian', 'cat-Ragdoll', 'cat-Russian_Blue', 'cat-Siamese',
+        'cat-Sphynx', 'dog-american_bulldog', 'dog-american_pit_bull_terrier',
+        'dog-basset_hound', 'dog-beagle', 'dog-boxer', 'dog-chihuahua',
+        'dog-english_cocker_spaniel', 'dog-english_setter',
+        'dog-german_shorthaired', 'dog-great_pyrenees', 'dog-havanese',
+        'dog-japanese_chin', 'dog-keeshond', 'dog-leonberger',
+        'dog-miniature_pinscher', 'dog-newfoundland', 'dog-pomeranian',
+        'dog-pug', 'dog-saint_bernard', 'dog-samoyed', 'dog-scottish_terrier',
+        'dog-shiba_inu', 'dog-staffordshire_bull_terrier',
+        'dog-wheaten_terrier', 'dog-yorkshire_terrier'
+    ],
+    palette=[(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230),
+             (106, 0, 228), (0, 60, 100), (0, 80, 100), (0, 0, 70),
+             (0, 0, 192), (250, 170, 30), (100, 170, 30), (220, 220, 0),
+             (175, 116, 175), (250, 0, 30), (165, 42, 42), (255, 77, 255),
+             (0, 226, 252), (182, 182, 255), (0, 82, 0), (120, 166, 157),
+             (110, 76, 0), (174, 57, 255), (199, 100, 0), (72, 0, 118),
+             (255, 179, 240), (0, 125, 92), (209, 0, 151), (188, 208, 182),
+             (0, 220, 176), (255, 99, 164), (92, 0, 73), (133, 129, 255),
+             (78, 180, 255), (0, 228, 0), (174, 255, 243), (45, 89, 255),
+             (134, 134, 103)])
 
 train_dataset = dict(
     dataset=dict(
@@ -75,8 +99,8 @@ default_hooks = dict(
     checkpoint=dict(
         save_best='auto',
         interval={{_base_.interval}},
-        max_keep_ckpts=3  # only keep latest 3 checkpoints
-    ),
+        max_keep_ckpts=3,  # only keep latest 3 checkpoints
+        rule='greater'),
     visualization=dict(draw=False, interval=5))
 custom_hooks = [
     dict(

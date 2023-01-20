@@ -3,7 +3,7 @@ img_scale = (640, 640)  # height, width
 
 data_root = 'data/coco/'
 dataset_type = 'CocoDataset'
-metainfo = dict(CLASSES=['foreground'], PALETTE=[(220, 20, 60)])
+metainfo = dict(classes=['foreground'], palette=[(220, 20, 60)])
 
 file_client_args = dict(backend='disk')
 

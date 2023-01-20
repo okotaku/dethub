@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_oxford_pets
+    In Collection: YOLOX
+    Config: configs/projects/oxford_pets/yolox/yolox_s_oxford_pets.py
+    Results:
+      - Task: Object Detection
+        Dataset: oxford_pets
+        Metrics:
+          box AP: 31.8
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1oxfordpets/yolox_s_oxford_pets-cebf28f4.pth

@@ -13,8 +13,8 @@ model = dict(bbox_head=dict(num_classes=num_classes))
 # dataset settings
 data_root = 'data/findfallenpeople/'
 metainfo = dict(
-    CLASSES=['Chair', 'Couch', 'Fallen', 'LyingPerson', 'NormalPeople'],
-    PALETTE=[(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230),
+    classes=['Chair', 'Couch', 'Fallen', 'LyingPerson', 'NormalPeople'],
+    palette=[(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230),
              (106, 0, 228)])
 
 train_dataset = dict(

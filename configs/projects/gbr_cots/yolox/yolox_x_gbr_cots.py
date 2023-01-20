@@ -29,7 +29,7 @@ data_root = 'data/gbr_cots/'
 dataset_type = 'CocoDataset'
 file_client_args = dict(backend='disk')
 
-metainfo = dict(CLASSES=['gbr'], PALETTE=[(220, 20, 60)])
+metainfo = dict(classes=['gbr'], palette=[(220, 20, 60)])
 train_pipeline = [
     dict(type='Mosaic', img_scale=img_scale, pad_val=114.0),
     dict(

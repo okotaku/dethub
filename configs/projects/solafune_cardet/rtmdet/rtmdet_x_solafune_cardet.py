@@ -12,7 +12,7 @@ model = dict(bbox_head=dict(num_classes=num_classes))
 
 # dataset settings
 data_root = 'data/solafune-cardet/'
-metainfo = dict(CLASSES=['car'], PALETTE=[(220, 20, 60)])
+metainfo = dict(classes=['car'], palette=[(220, 20, 60)])
 
 train_dataloader = dict(
     batch_size=4,

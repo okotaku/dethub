@@ -23,7 +23,7 @@ model = dict(
 
 # dataset settings
 data_root = 'data/gbr_cots/'
-metainfo = dict(CLASSES=['gbr'], PALETTE=[(220, 20, 60)])
+metainfo = dict(classes=['gbr'], palette=[(220, 20, 60)])
 
 train_dataset = dict(
     dataset=dict(

@@ -24,8 +24,8 @@ model = dict(
 # dataset settings
 data_root = 'data/sartorius_cellseg/'
 metainfo = dict(
-    CLASSES=['shsy5y', 'astro', 'cort'],
-    PALETTE=[(220, 20, 60), (119, 11, 32), (0, 0, 142)])
+    classes=['shsy5y', 'astro', 'cort'],
+    palette=[(220, 20, 60), (119, 11, 32), (0, 0, 142)])
 
 train_dataset = dict(
     dataset=dict(
