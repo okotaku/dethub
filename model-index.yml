@@ -13,6 +13,7 @@ Import:
   - configs/projects/lvis/yolox/metafile.yml
   - configs/projects/openimages/yolox/metafile.yml
   - configs/projects/oxford_pets/yolox/metafile.yml
+  - configs/projects/paco/yolox/metafile.yml
   - configs/projects/sartorius_cellseg/yolox/metafile.yml
   - configs/projects/smoke100/yolox/metafile.yml
   - configs/projects/solafune_cardet/rtmdet/metafile.yml
