@@ -1,0 +1,13 @@
+Collections:
+  - Name: YOLOX
+
+Models:
+  - Name: yolox_s_paco_lvis
+    In Collection: YOLOX
+    Config: configs/projects/paco/yolox/yolox_s_paco_lvis.py
+    Results:
+      - Task: Object Detection
+        Dataset: paco_lvis
+        Metrics:
+          box AP: 10.1
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1paco_lvis/yolox_s_paco_lvis-e11ca54d.pth
