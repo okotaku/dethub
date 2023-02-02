@@ -1,0 +1,35 @@
+_base_ = [
+    'mmdet::_base_/default_runtime.py',
+    '../../../_base_/models/rtmdet/rtmdet_s_p6.py',
+    '../../../_base_/datasets/lvis/lvis_detection_rtmdet_s_1280.py',
+    '../../../_base_/schedules/rtmdet/rtmdet_300e.py'
+]
+custom_imports = dict(imports=['dethub'], allow_failed_imports=False)
+fp16 = dict(loss_scale=512.)
+
+# model settings
+num_classes = 1203
+model = dict(
+    bbox_head=dict(num_classes=num_classes), test_cfg=dict(score_thr=0.001))
+
+train_dataloader = dict(batch_size=2, num_workers=8)
+val_dataloader = dict(batch_size=2, num_workers=8)
+
+# runtime settings
+custom_hooks = [
+    dict(
+        type='EMAHook',
+        ema_type='ExpMomentumEMA',
+        momentum=0.0002,
+        update_buffers=True,
+        priority=49),
+    dict(
+        type='PipelineSwitchHook',
+        switch_epoch=280,
+        switch_pipeline={{_base_.train_pipeline_stage2}})
+]
+
+# NOTE: `auto_scale_lr` is for automatically scaling LR,
+# USER SHOULD NOT CHANGE ITS VALUES.
+# base_batch_size = (32 GPUs) x (8 samples per GPU)
+auto_scale_lr = dict(enable=True, base_batch_size=256)

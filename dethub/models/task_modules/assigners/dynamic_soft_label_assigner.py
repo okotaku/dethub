@@ -148,18 +148,17 @@ class DynamicSoftLabelAssigner(Base):
                           num_valid, 1, 1))
         valid_pred_scores = valid_pred_scores.unsqueeze(1).repeat(1, num_gt, 1)
 
-        soft_label = gt_onehot_label * pairwise_ious[..., None]
-        scale_factor = soft_label - valid_pred_scores.sigmoid()
         soft_cls_cost = torch.empty(
             valid_pred_scores.size(0),
             valid_pred_scores.size(1),
             device=valid_pred_scores.device,
             dtype=valid_pred_scores.dtype)
         for i in range(valid_pred_scores.size(2)):
+            soft_label = gt_onehot_label[..., i] * pairwise_ious
+            scale_factor = soft_label - valid_pred_scores[..., i].sigmoid()
             soft_cls_cost = soft_cls_cost + F.binary_cross_entropy_with_logits(
-                valid_pred_scores[..., i],
-                soft_label[..., i],
-                reduction='none') * scale_factor[..., i].abs().pow(2.0)
+                valid_pred_scores[..., i], soft_label,
+                reduction='none') * scale_factor.abs().pow(2.0)
 
         cost_matrix = soft_cls_cost + iou_cost + soft_center_prior
 
