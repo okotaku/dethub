@@ -10,10 +10,12 @@ Import:
   - configs/projects/gbr_cots/yolox/metafile.yml
   - configs/projects/le2i/yolox/metafile.yml
   - configs/projects/livecell/yolox/metafile.yml
+  - configs/projects/lvis/dino/metafile.yml
   - configs/projects/lvis/yolox/metafile.yml
   - configs/projects/openimages/yolox/metafile.yml
   - configs/projects/oxford_pets/yolox/metafile.yml
   - configs/projects/paco/yolox/metafile.yml
+  - configs/projects/paco/dino/metafile.yml
   - configs/projects/sartorius_cellseg/yolox/metafile.yml
   - configs/projects/smoke100/yolox/metafile.yml
   - configs/projects/solafune_cardet/rtmdet/metafile.yml

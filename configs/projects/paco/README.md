@@ -11,7 +11,7 @@
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/paco/demo/000000000109.jpg configs/projects/paco/yolox/yolox_s_paco_lvis.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1paco_lvis/yolox_s_paco_lvis-e11ca54d.pth --out-file configs/projects/paco/demo/000000000109_demo.jpg --score-thr 0.01
+$ docker compose exec dethub python tools/image_demo.py configs/projects/paco/demo/000000000109.jpg configs/projects/paco/dino/dino-4scale_r50_paco_lvis.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dino/dino-4scale_r50_paco_lvis-e460dbff.pth --out-file configs/projects/paco/demo/000000000109_demo.jpg --palette random
 ```
 
 ![plot](demo/000000000109_demo.jpg)
