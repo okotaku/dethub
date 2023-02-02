@@ -1,0 +1,13 @@
+Collections:
+  - Name: DINO
+
+Models:
+  - Name: dino-4scale_r50_lvis
+    In Collection: DINO
+    Config: configs/projects/lvis/dino/dino-4scale_r50_lvis.py
+    Results:
+      - Task: Object Detection
+        Dataset: lvis
+        Metrics:
+          box AP: 27.7
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dino/dino-4scale_r50_lvis-ea80fe74.pth
