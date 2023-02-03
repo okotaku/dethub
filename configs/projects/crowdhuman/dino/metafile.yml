@@ -1,0 +1,22 @@
+Collections:
+  - Name: DINO
+
+Models:
+  - Name: dino-4scale_r50_crowdhuman
+    In Collection: DINO
+    Config: configs/projects/crowdhuman/dino/dino-4scale_r50_crowdhuman.py
+    Results:
+      - Task: Object Detection
+        Dataset: lvis
+        Metrics:
+          box AP: 92.9
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dino-crowdhuman/dino-4scale_r50_crowdhuman-ebfc9dc7.pth
+  - Name: dino-4scale_r50-pre-lvis_crowdhuman
+    In Collection: DINO
+    Config: configs/projects/crowdhuman/dino/dino-4scale_r50-pre-lvis_crowdhuman.py
+    Results:
+      - Task: Object Detection
+        Dataset: lvis
+        Metrics:
+          box AP: 92.2
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dino-crowdhuman/dino-4scale_r50-pre-lvis_crowdhuman-d54735f1.pth
