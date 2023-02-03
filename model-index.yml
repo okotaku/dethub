@@ -5,6 +5,7 @@ Import:
   - configs/projects/coco/yolox/metafile.yml
   - configs/projects/coco/rpn/metafile.yml
   - configs/projects/coco1class/yolox/metafile.yml
+  - configs/projects/crowdhuman/dino/metafile.yml
   - configs/projects/crowdhuman/yolox/metafile.yml
   - configs/projects/findfallenpeople/yolox/metafile.yml
   - configs/projects/gbr_cots/yolox/metafile.yml
