@@ -11,3 +11,12 @@ Models:
         Metrics:
           box AP: 49.5
     Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1cocortmdet/rtmdet_s_swin_s-ecb76846.pth
+  - Name: rtmdet_s_p6_coco
+    In Collection: RTMDet
+    Config: configs/projects/coco/rtmdet/rtmdet_s_p6_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 49.9
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1rtmdet1280coco/rtmdet_s_p6_coco-9415b826.pth
