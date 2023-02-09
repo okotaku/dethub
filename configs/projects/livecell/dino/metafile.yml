@@ -1,0 +1,13 @@
+Collections:
+  - Name: DINO
+
+Models:
+  - Name: dino-4scale_r50_livecell
+    In Collection: DINO
+    Config: configs/projects/livecell/dino/dino-4scale_r50_livecell.py
+    Results:
+      - Task: Object Detection
+        Dataset: livecell
+        Metrics:
+          box AP: 52.3
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dino-livecell/dino-4scale_r50_livecell-535173b5.pth
