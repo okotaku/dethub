@@ -10,6 +10,7 @@ Import:
   - configs/projects/findfallenpeople/yolox/metafile.yml
   - configs/projects/gbr_cots/yolox/metafile.yml
   - configs/projects/le2i/yolox/metafile.yml
+  - configs/projects/livecell/dino/metafile.yml
   - configs/projects/livecell/yolox/metafile.yml
   - configs/projects/lvis/dino/metafile.yml
   - configs/projects/lvis/yolox/metafile.yml
