@@ -1,3 +1,4 @@
+checkpoint = 'https://download.openmmlab.com/mmdetection/v3.0/rtmdet/cspnext_rsb_pretrain/cspnext-s_imagenet_600e.pth'  # noqa
 model = dict(
     type='RTMDet',
     data_preprocessor=dict(
@@ -14,7 +15,9 @@ model = dict(
         widen_factor=0.5,
         channel_attention=True,
         norm_cfg=dict(type='SyncBN'),
-        act_cfg=dict(type='SiLU')),
+        act_cfg=dict(type='SiLU', inplace=True),
+        init_cfg=dict(
+            type='Pretrained', prefix='backbone.', checkpoint=checkpoint)),
     neck=dict(
         type='CSPNeXtPAFPN',
         in_channels=[128, 256, 512],
@@ -22,7 +25,7 @@ model = dict(
         num_csp_blocks=1,
         expand_ratio=0.5,
         norm_cfg=dict(type='SyncBN'),
-        act_cfg=dict(type='SiLU')),
+        act_cfg=dict(type='SiLU', inplace=True)),
     bbox_head=dict(
         type='RTMDetSepBNHead',
         num_classes=80,
@@ -43,16 +46,16 @@ model = dict(
         share_conv=True,
         pred_kernel_size=1,
         norm_cfg=dict(type='SyncBN'),
-        act_cfg=dict(type='SiLU')),
+        act_cfg=dict(type='SiLU', inplace=True)),
     train_cfg=dict(
         assigner=dict(type='DynamicSoftLabelAssigner', topk=13),
         allowed_border=-1,
         pos_weight=-1,
         debug=False),
     test_cfg=dict(
-        nms_pre=1000,
+        nms_pre=30000,
         min_bbox_size=0,
-        score_thr=0.05,
-        nms=dict(type='nms', iou_threshold=0.6),
-        max_per_img=100),
+        score_thr=0.001,
+        nms=dict(type='nms', iou_threshold=0.65),
+        max_per_img=300),
 )

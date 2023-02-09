@@ -1,6 +1,6 @@
 _base_ = [
     'mmdet::_base_/default_runtime.py',
-    '../../../_base_/models/rtmdet_s.py',
+    '../../../_base_/models/rtmdet/rtmdet_s.py',
     '../../../_base_/datasets/solafune_cardet/solafune_cardet_rtmdet_s_1280.py',  # noqa
     '../../../_base_/schedules/rtmdet/rtmdet_100e.py',
 ]

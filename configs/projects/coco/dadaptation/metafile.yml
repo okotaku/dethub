@@ -1,0 +1,22 @@
+Collections:
+  - Name: D-Adaptation
+
+Models:
+  - Name: faster-rcnn_r50_dadaptation_coco
+    In Collection: D-Adaptation
+    Config: configs/projects/coco/dadaptation/faster-rcnn_r50_dadaptation_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 36.9
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dadaptation/faster-rcnn_r50_dadaptation_coco-dc9a85dd.pth
+  - Name: rtmdet_s_dadaptation_coco
+    In Collection: D-Adaptation
+    Config: configs/projects/coco/dadaptation/rtmdet_s_dadaptation_coco.py
+    Results:
+      - Task: Object Detection
+        Dataset: COCO
+        Metrics:
+          box AP: 44.3
+    Weights: https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dadaptation/rtmdet_s_dadaptation_coco-aa1bf987.pth
