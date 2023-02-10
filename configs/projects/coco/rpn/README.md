@@ -1,6 +1,6 @@
 # RPN
 
-[model page](../../../rpn/README.md)
+[model page](https://github.com/open-mmlab/mmdetection/blob/3.x/configs/rpn/README.md)
 
 ## Results and Models
 

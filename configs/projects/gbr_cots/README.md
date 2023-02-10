@@ -5,7 +5,7 @@ Kaggle [TensorFlow - Help Protect the Great Barrier Reef](https://www.kaggle.com
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/gbr_cots/demo/5756.jpg configs/projects/gbr_cots/yolox/yolox_s_gbr_cots.py https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_gbr_cots-cefaa435.pth --out-file configs/projects/gbr_cots/demo/5756_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/gbr_cots/demo/5756.jpg configs/projects/gbr_cots/yolox/yolox_s_gbr_cots.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_gbr_cots-cefaa435.pth --out-dir configs/projects/gbr_cots/demo/result
 ```
 
 ![plot](demo/5756_demo.jpg)

@@ -1,6 +1,6 @@
 # RTMDet
 
-[model page](../../../rtmdet/README.md)
+[model page](https://github.com/open-mmlab/mmdetection/blob/3.x/configs/rtmdet/README.md)
 
 ## Results and Models
 

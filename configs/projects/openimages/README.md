@@ -5,7 +5,7 @@
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/openimages/demo/000002b66c9c498e.jpg configs/projects/openimages/yolox/yolox_s_openimages.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1openimages_yolox/yolox_s_openimages-46accb21.pth --out-file configs/projects/openimages/demo/000002b66c9c498e_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/openimages/demo/000002b66c9c498e.jpg configs/projects/openimages/yolox/yolox_s_openimages.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.1.1openimages_yolox/yolox_s_openimages-46accb21.pth --out-dir configs/projects/openimages/demo/result
 ```
 
 ![plot](demo/000000000025_demo.jpg)

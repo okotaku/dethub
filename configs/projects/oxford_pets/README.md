@@ -11,7 +11,7 @@
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/oxford_pets/demo/keeshond_10_jpg.rf.b831768f3f5245fe5bdee6dff2756d53.jpg configs/projects/oxford_pets/yolox/yolox_s_oxford_pets.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1oxfordpets/yolox_s_oxford_pets-cebf28f4.pth --out-file configs/projects/oxford_pets/demo/keeshond_10_jpg.rf.b831768f3f5245fe5bdee6dff2756d53_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/oxford_pets/demo/keeshond_10_jpg.rf.b831768f3f5245fe5bdee6dff2756d53.jpg configs/projects/oxford_pets/yolox/yolox_s_oxford_pets.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.1.1oxfordpets/yolox_s_oxford_pets-cebf28f4.pth --out-dir configs/projects/oxford_pets/demo/result
 ```
 
 ![plot](demo/keeshond_10_jpg.rf.b831768f3f5245fe5bdee6dff2756d53_demo.jpg)

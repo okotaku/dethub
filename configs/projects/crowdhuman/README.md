@@ -15,8 +15,7 @@ Human detection has witnessed impressive progress in recent years. However, the 
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/crowdhuman/demo/273271,106220007be3af91.jpg configs/projects/crowdhuman/yolox/yolox_s_crowdhuman.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1crowdhuman/yolox_s_crowdhuman-fd5a218a.pth --out-file configs/projects/crowdhuman/demo/273271,106220007be3af91_demo.jpg
-```
+$ docker compose exec dethub python tools/image_demo.py configs/projects/crowdhuman/demo/273271,106220007be3af91.jpg configs/projects/crowdhuman/yolox/yolox_s_crowdhuman.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.1.1crowdhuman/yolox_s_crowdhuman-fd5a218a.pth --out-dir configs/projects/crowdhuman/demo/result
 
 ![plot](demo/273271,106220007be3af91_demo.jpg)
 
@@ -27,12 +26,14 @@ $ docker compose exec dethub python tools/image_demo.py configs/projects/crowdhu
 2. Unzip the files as follows
 
 ```
+
 data/CrowdHuman
 ├── annotation_train.odgt
 ├── annotation_val.odgt
 ├── id_hw_train.json
 ├── id_hw_val.json
 └── Images
+
 ```
 
 ## Run train
@@ -40,23 +41,32 @@ data/CrowdHuman
 Set env variables
 
 ```
+
 $ export DATA_DIR=/path/to/data
+
 ```
 
 Start a docker container
 
 ```
+
 $ docker compose up -d dethub
+
 ```
 
 Run train
 
 ```
+
 # single gpu
+
 $ docker compose exec dethub mim train mmdet configs/projects/crowdhuman/yolox/yolox_s_crowdhuman.py
+
 # multi gpus
+
 $ docker compose exec dethub mim train mmdet configs/projects/crowdhuman/yolox/yolox_s_crowdhuman.py --gpus 2 --launcher pytorch
-```
+
+````
 
 ## Citation
 
@@ -67,4 +77,4 @@ $ docker compose exec dethub mim train mmdet configs/projects/crowdhuman/yolox/y
   journal={arXiv preprint arXiv:1805.00123},
   year={2018}
 }
-```
+````

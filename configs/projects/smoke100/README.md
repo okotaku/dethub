@@ -5,7 +5,7 @@
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/smoke100/demo/M_03811_png.rf.dffeb0ed03627dbbc06f9a3ce8da5de7.jpg configs/projects/smoke100/yolox/yolox_s_smoke100.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1smoke100/yolox_s_smoke100-670611b4.pth --out-file configs/projects/smoke100/demo/M_03811_png.rf.dffeb0ed03627dbbc06f9a3ce8da5de7_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/smoke100/demo/M_03811_png.rf.dffeb0ed03627dbbc06f9a3ce8da5de7.jpg configs/projects/smoke100/yolox/yolox_s_smoke100.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.1.1smoke100/yolox_s_smoke100-670611b4.pth --out-dir configs/projects/smoke100/demo/result
 ```
 
 ![plot](demo/M_03811_png.rf.dffeb0ed03627dbbc06f9a3ce8da5de7_demo.jpg)
