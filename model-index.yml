@@ -1,6 +1,7 @@
 
 Import:
   - configs/projects/bollworm_count/yolox/metafile.yml
+  - configs/projects/coco/dadaptation/metafile.yml
   - configs/projects/coco/rtmdet/metafile.yml
   - configs/projects/coco/yolox/metafile.yml
   - configs/projects/coco/rpn/metafile.yml
