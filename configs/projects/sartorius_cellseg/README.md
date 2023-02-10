@@ -5,7 +5,7 @@ Kaggle [Sartorius - Cell Instance Segmentation](https://www.kaggle.com/c/sartori
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/sartorius_cellseg/demo/0030fd0e6378.png configs/projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg.py https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_sartorius_cellseg-3d3d487f.pth --out-file configs/projects/sartorius_cellseg/demo/0030fd0e6378_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/sartorius_cellseg/demo/0030fd0e6378.png configs/projects/sartorius_cellseg/yolox/yolox_s_sartorius_cellseg.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_sartorius_cellseg-3d3d487f.pth --out-dir configs/projects/sartorius_cellseg/demo/result
 ```
 
 ![plot](demo/0030fd0e6378_demo.jpg)

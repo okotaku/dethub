@@ -16,7 +16,7 @@ of benchmarks.
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/livecell/demo/A172_Phase_A7_1_00d00h00m_1.tif configs/projects/livecell/yolox/yolox_s_livecell.py https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_livecell-b3f4347f.pth --out-file configs/projects/livecell/demo/A172_Phase_A7_1_00d00h00m_1_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/livecell/demo/A172_Phase_A7_1_00d00h00m_1.tif configs/projects/livecell/yolox/yolox_s_livecell.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.0.1/yolox_s_livecell-b3f4347f.pth --out-dir configs/projects/livecell/demo/result
 ```
 
 ![plot](demo/A172_Phase_A7_1_00d00h00m_1_demo.jpg)

@@ -5,7 +5,7 @@
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/findfallenpeople/demo/split1_750_png.rf.277c3e8e2f49cdd0505d1b657633c707.jpg configs/projects/findfallenpeople/yolox/yolox_s_findfallenpeople.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1findfallenpeople/yolox_s_findfallenpeople-2f7d2b6d.pth --out-file configs/projects/findfallenpeople/demo/split1_750_png.rf.277c3e8e2f49cdd0505d1b657633c707_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/findfallenpeople/demo/split1_750_png.rf.277c3e8e2f49cdd0505d1b657633c707.jpg configs/projects/findfallenpeople/yolox/yolox_s_findfallenpeople.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.1.1findfallenpeople/yolox_s_findfallenpeople-2f7d2b6d.pth --out-dir configs/projects/findfallenpeople/demo/result
 ```
 
 ![plot](demo/split1_750_png.rf.277c3e8e2f49cdd0505d1b657633c707_demo.jpg)

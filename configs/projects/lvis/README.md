@@ -15,7 +15,7 @@ Progress on object detection is enabled by datasets that focus the research comm
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/lvis/demo/000000000025.jpg configs/projects/lvis/dino/dino-4scale_r50_lvis.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dino/dino-4scale_r50_lvis-ea80fe74.pth --out-file configs/projects/lvis/demo/000000000025_demo.jpg --palette random
+$ docker compose exec dethub python tools/image_demo.py configs/projects/lvis/demo/000000000025.jpg configs/projects/lvis/dino/dino-4scale_r50_lvis.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.1.1dino/dino-4scale_r50_lvis-ea80fe74.pth --out-dir configs/projects/lvis/demo/result --palette random
 ```
 
 ![plot](demo/000000000025_demo.jpg)

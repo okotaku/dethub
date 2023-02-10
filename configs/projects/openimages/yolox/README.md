@@ -1,6 +1,6 @@
 # YOLOX
 
-[model page](../../../yolox/README.md)
+[model page](https://github.com/open-mmlab/mmdetection/blob/3.x/configs/yolox/README.md)
 
 ## Results and Models
 

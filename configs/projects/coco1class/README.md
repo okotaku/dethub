@@ -5,7 +5,7 @@
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/coco/demo/000000000025.jpg configs/projects/coco1class/yolox/yolox_s_coco1class.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1coco1class/yolox_s_coco1class-596787a8.pth --out-file configs/projects/coco1class/demo/000000000025_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/coco/demo/000000000025.jpg configs/projects/coco1class/yolox/yolox_s_coco1class.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.1.1coco1class/yolox_s_coco1class-596787a8.pth --out-dir configs/projects/coco1class/demo/result
 ```
 
 ![plot](demo/000000000025_demo.jpg)

@@ -5,7 +5,7 @@ Solafune [Vehicle Detection in Multi-Resolution Images](https://solafune.com/com
 ## Run demo
 
 ```
-$ docker compose exec dethub python tools/image_demo.py configs/projects/solafune_cardet/demo/train_155.jpg configs/projects/solafune_cardet/yolox/yolox_x_solafune_cardet.py https://github.com/okotaku/dethub-weights/releases/download/v0.1.1solafune-cardet/yolox_x_solafune_cardet-97ba0444.pth --out-file configs/projects/solafune_cardet/demo/train_155_demo.jpg
+$ docker compose exec dethub python tools/image_demo.py configs/projects/solafune_cardet/demo/train_155.jpg configs/projects/solafune_cardet/yolox/yolox_x_solafune_cardet.py --weights https://github.com/okotaku/dethub-weights/releases/download/v0.1.1solafune-cardet/yolox_x_solafune_cardet-97ba0444.pth --out-dir configs/projects/solafune_cardet/demo/result
 ```
 
 ![plot](demo/train_155_demo.jpg)
